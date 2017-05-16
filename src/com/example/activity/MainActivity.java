@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
 		pic = (ImageView) findViewById(R.id.pic);
 		username = (TextView) findViewById(R.id.username);
 		//logout = (Button) findViewById(R.id.logout);
-		User user = User.getInstance();
+		User user = User.getUser();
 		username.setText(user.getUserName() + "\n" + "µÇÂ½³É¹¦£¡");
 	}
 		

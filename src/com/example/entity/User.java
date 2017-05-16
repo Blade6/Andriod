@@ -6,22 +6,14 @@ public class User {
 	private String userid;
 	private String username;
 	private String pwd;
-	private String Q1;
-	private String A1;
-	private String Q2;
-	private String A2;
 	private String pic;
 	
-	private User() {}
-	
-	public static void initUser(String userid, String username, String pic) {
-		user = new User();
-		user.setUserId(userid);
-		user.setUserName(username);
-		user.setPic(pic);
+	public static void setUser(User user1) {
+		user = user1;
 	}
 	
-	public static User getInstance() {
+	// 除了登录外，其他请求User的地方都应该调用getUser()方法
+	public static User getUser() {
 		if (user == null)
 			throw new NullPointerException();
 		return user;

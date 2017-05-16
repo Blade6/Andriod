@@ -4,6 +4,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.entity.User;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 import android.util.Log;
 
@@ -16,7 +18,7 @@ public class JsonParser {
 			String returnCode = jsonObject.getString("returnCode");
 			if (returnCode.equals("1")) {
 				String datatype = jsonObject.getString("datatype");
-				JSONObject data = jsonObject.getJSONObject("data");
+				String data = jsonObject.getString("data");
 				if (datatype.equals("userInfo")) buildUser(data);
 				message = "success";
 			}
@@ -29,17 +31,10 @@ public class JsonParser {
 			return message;
 		}
 	}
-	
-	public static void buildUser(JSONObject data) throws JSONException {
-		String userid = data.getString("userid");
-		String username = data.getString("username");
-		String pic = data.getString("pic");
-		
-		User.initUser(userid, username, pic);
-		User user = User.getInstance();
-		user.setUserId(userid);
-		user.setUserName(username);
-		user.setPic(pic);
+
+	private static void buildUser(String data) {
+		Gson gson = new Gson();
+		User.setUser(gson.fromJson(data, User.class));
 	}
 	
 }

@@ -3,6 +3,7 @@ package com.example.activity;
 import com.example.util.HttpCallbackListener;
 import com.example.util.HttpUtil;
 import com.example.util.JsonParser;
+import com.example.util.LogUtil;
 import com.example.util.MD5;
 import com.example.wechat.R;
 
@@ -10,7 +11,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -30,7 +30,7 @@ public class LoginActivity extends Activity {
 		setContentView(R.layout.login);
 		login_userid = (EditText) findViewById(R.id.login_userid);
 		login_password = (EditText) findViewById(R.id.login_password);
-		loginState = (TextView) findViewById(R.id.loginstate);
+		loginState = (TextView) findViewById(R.id.loginState);
 		login_button = (Button) findViewById(R.id.login_button);
 		login_button.setOnClickListener(new OnClickListener() {			
 			@Override
@@ -43,11 +43,10 @@ public class LoginActivity extends Activity {
 	
 	public void login(final Context context, String userid, String pwd) {
 		pwd = MD5.getMd5(pwd);
-		String ip = "192.168.22.2:8080";
-		String address = "http://" + ip + "/wechat/index.php/Home/User/login/"
+		String address = "wechat/index.php/Home/User/login/"
 				+ "userid/" + userid + "/pwd/" + pwd;
 
-		HttpUtil.sendHttpRequest(address, new HttpCallbackListener() {
+		HttpUtil.sendHttpRequest(address, "POST", new HttpCallbackListener() {
 			@Override
 			public void onFinish(String response) {
 				String s = JsonParser.handleResponse(response);
@@ -66,7 +65,7 @@ public class LoginActivity extends Activity {
 			}
 			@Override
 			public void onError(Exception e) {
-				Log.d("MainActivity", e.toString());
+				LogUtil.d("MainActivity", e.toString());
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
