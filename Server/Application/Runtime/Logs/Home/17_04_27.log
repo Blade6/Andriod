@@ -1,0 +1,65 @@
+[ 2017-04-27T00:00:16+08:00 ] 192.168.201.80 /wechat/index.php/Home/Index/test/userid/hjh/pwd/18ef25b59079b7210a0040e48c5e5a5a
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002061s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.010376s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010532s ]
+ERR: 非法操作:test
+
+[ 2017-04-27T00:01:55+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/test/userid/hjh/pwd/18ef25b59079b7210a0040e48c5e5a5a
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000835s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004738s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005023s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0246s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `user` WHERE `userid` = 'hjh' AND `password` = '18ef25b59079b7210a0040e48c5e5a5a' LIMIT 1   [ RunTime:0.0008s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.022321s ]
+INFO: [ app_end ] --END-- [ RunTime:0.022434s ]
+
+[ 2017-04-27T00:03:29+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/test/userid/hjh/pwd/18ef25b59079b7210a0040e48c5e5a5a
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000455s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000757s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000805s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0037s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0031s ]
+SQL: SELECT * FROM `user` WHERE `userid` = 'hjh' AND `password` = '18ef25b59079b7210a0040e48c5e5a5a' LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000991s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001032s ]
+
+[ 2017-04-27T00:04:56+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/test/userid/hjh/pwd/18ef25b59079b7210a0040e48c5e5a5a
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000557s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000842s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000889s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0037s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0033s ]
+SQL: SELECT * FROM `user` WHERE `userid` = 'hjh' AND `password` = '18ef25b59079b7210a0040e48c5e5a5a' LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000955s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000995s ]
+
+[ 2017-04-27T00:07:00+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/test/userid/000001/pwd/18ef25b59079b7210a0040e48c5e5a5a
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000902s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000842s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000907s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0381s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0047s ]
+SQL: SELECT * FROM `user` WHERE `userid` = '000001' AND `password` = '18ef25b59079b7210a0040e48c5e5a5a' LIMIT 1   [ RunTime:0.0014s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002787s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002921s ]
+

@@ -1,0 +1,20 @@
+[ 2017-04-26T16:44:46+08:00 ] ::1 /wechat/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000076s ]
+INFO: [ app_init ] --END-- [ RunTime:0.032690s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.014811s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015116s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.037402s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.037573s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.091432s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.091630s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.009516s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.009662s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.009775s ]
+INFO: [ app_end ] --END-- [ RunTime:0.009923s ]
+

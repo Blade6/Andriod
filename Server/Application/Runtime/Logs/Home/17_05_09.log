@@ -1,0 +1,14 @@
+[ 2017-05-09T20:25:40+08:00 ] ::1 /wechat/index.php/Home/User/login/userid/000001/pwd/99e40398f347155124bacca53b74750e
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.011080s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.021636s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.021746s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.1523s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `user` WHERE `userid` = '000001' AND `password` = '99e40398f347155124bacca53b74750e' LIMIT 1   [ RunTime:0.0320s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.015672s ]
+INFO: [ app_end ] --END-- [ RunTime:0.015761s ]
+
