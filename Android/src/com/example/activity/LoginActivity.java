@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 public class LoginActivity extends Activity {
 	
-	private EditText login_userid;
+	private EditText login_username;
 	private EditText login_password;
 	private Button login_button;
 	private TextView loginState;
@@ -28,23 +28,23 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
-		login_userid = (EditText) findViewById(R.id.login_userid);
+		login_username = (EditText) findViewById(R.id.login_username);
 		login_password = (EditText) findViewById(R.id.login_password);
 		loginState = (TextView) findViewById(R.id.loginState);
 		login_button = (Button) findViewById(R.id.login_button);
 		login_button.setOnClickListener(new OnClickListener() {			
 			@Override
 			public void onClick(View v) {
-				login(LoginActivity.this, login_userid.getText().toString().trim(),
+				login(LoginActivity.this, login_username.getText().toString().trim(),
 						login_password.getText().toString().trim());
 			}
 		});
 	}
 	
-	public void login(final Context context, String userid, String pwd) {
+	public void login(final Context context, String username, String pwd) {
 		pwd = MD5.getMd5(pwd);
 		String address = "wechat/index.php/Home/User/login/"
-				+ "userid/" + userid + "/pwd/" + pwd;
+				+ "username/" + username + "/pwd/" + pwd;
 
 		HttpUtil.sendHttpRequest(address, "POST", new HttpCallbackListener() {
 			@Override

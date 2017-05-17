@@ -13,10 +13,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20sp"
             android:layout_marginRight="20sp"
-            android:text="userid"/>
+            android:text="username"/>
         
         <EditText
-            android:id="@+id/login_userid" 
+            android:id="@+id/login_username" 
             android:layout_width="200sp"
             android:layout_height="wrap_content"/>
         

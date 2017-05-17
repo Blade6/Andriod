@@ -30,23 +30,25 @@ class UserModel extends Model {
         return $this->insertID;
     }
     
-    public function userLogin($userid, $pwd) {
-        $data['userid'] = $userid;
+    public function userLogin($username, $pwd) {
+        $data['username'] = $username;
         $data['password'] = $pwd;
         $result = $this->user->where($data)->find();
         return $result;
     }
     
     public function userSignup($username, $pwd) {
+        // 先检验用户名是否存在
+        $data['username'] = $username;
+        if ($this->user->where($data)->find()) return -1;
+        
         $this->insertID += 1;
         $userid = str_pad($this->insertID, 6, "0", STR_PAD_LEFT);
         $data['userid'] = $userid;
-        $data['username'] = $username;
         $data['password'] = $pwd;
         
-        $this->user->create($data);
-	if($this->user->add($data)) return 1;
-	return 0;
+	if($this->user->add($data)) return $userid;
+	else return 0;
     }
     
 }

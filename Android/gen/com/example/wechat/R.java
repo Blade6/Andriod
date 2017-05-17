@@ -39,7 +39,7 @@ public final class R {
         public static final int loginState=0x7f08000e;
         public static final int login_button=0x7f08000d;
         public static final int login_password=0x7f08000c;
-        public static final int login_userid=0x7f08000b;
+        public static final int login_username=0x7f08000b;
         public static final int logout=0x7f080019;
         public static final int msg_list_view=0x7f080006;
         public static final int pic=0x7f080017;

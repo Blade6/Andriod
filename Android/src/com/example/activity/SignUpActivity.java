@@ -37,13 +37,13 @@ public class SignUpActivity extends Activity {
 		zhuce_button.setOnClickListener(new OnClickListener() {		
 			@Override
 			public void onClick(View v) {
-				signup(SignUpActivity.this, signup_username.getText().toString(), 
+				signup(signup_username.getText().toString(), 
 						signup_password.getText().toString());				
 			}
 		});
 	}
 	
-	public void signup(final Context context, String username, String pwd) {
+	public void signup(String username, String pwd) {
 		pwd = MD5.getMd5(pwd);
 		String address = "wechat/index.php/Home/User/signup/"
 				+ "username/" + username + "/pwd/" + pwd;
@@ -53,15 +53,16 @@ public class SignUpActivity extends Activity {
 				try {
 					JSONObject jsonObject = new JSONObject(response.toString());
 					String returnCode = jsonObject.getString("returnCode");
+					final String msg = jsonObject.getString("msg");
 					if (returnCode.equals("1")) {
-						Intent intent = new Intent(context, LoginActivity.class);
+						Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
 						startActivity(intent);
 						finish();
 					} else {
 						runOnUiThread(new Runnable() {							
 							@Override
 							public void run() {
-								signupState.setText("ÓÃ»§ÒÑ×¢²á£¡");								
+								signupState.setText(msg);								
 							}
 						});
 					}

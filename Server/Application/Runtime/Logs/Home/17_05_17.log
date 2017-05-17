@@ -1,0 +1,87 @@
+[ 2017-05-17T21:10:06+08:00 ] ::1 /wechat/index.php/Home/User/signup/username/0qh8pk/pwd/4e99e32f786740bfd64e339bd375c5f1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.017534s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.012002s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.012187s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0080s ]
+SQL: SELECT `id` FROM `user` ORDER BY id desc LIMIT 1   [ RunTime:0.0007s ]
+ERR: 1062:Duplicate entry '0qh8pk' for key 'username'
+ [ SQL语句 ] : INSERT INTO `user` (`userid`,`username`,`password`) VALUES ('000011','0qh8pk','4e99e32f786740bfd64e339bd375c5f1')
+ERR: 1062:Duplicate entry '0qh8pk' for key 'username'
+ [ SQL语句 ] : INSERT INTO `user` (`userid`,`username`,`password`) VALUES ('000011','0qh8pk','4e99e32f786740bfd64e339bd375c5f1')
+
+[ 2017-05-17T21:15:08+08:00 ] ::1 /wechat/index.php/Home/User/signup/username/0qh8pk/pwd/4e99e32f786740bfd64e339bd375c5f1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000621s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000897s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000947s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0054s ]
+SQL: SELECT `id` FROM `user` ORDER BY id desc LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `user` WHERE `username` = '0qh8pk' LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.043431s ]
+INFO: [ app_end ] --END-- [ RunTime:0.043511s ]
+
+[ 2017-05-17T21:16:14+08:00 ] ::1 /wechat/index.php/Home/User/signup/username/0qh9pk/pwd/4e99e32f786740bfd64e339bd375c5f1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000547s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000801s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000849s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0262s ]
+SQL: SELECT `id` FROM `user` ORDER BY id desc LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `user` WHERE `username` = '0qh9pk' LIMIT 1   [ RunTime:0.0002s ]
+SQL: INSERT INTO `user` (`username`,`userid`,`password`) VALUES ('0qh9pk','000011','4e99e32f786740bfd64e339bd375c5f1') [ RunTime:0.1285s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004298s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004476s ]
+
+[ 2017-05-17T21:16:58+08:00 ] ::1 /wechat/index.php/Home/User/signup/username/0qh7pk/pwd/4e99e32f786740bfd64e339bd375c5f1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000552s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000802s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000841s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0141s ]
+SQL: SELECT `id` FROM `user` ORDER BY id desc LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `user` WHERE `username` = '0qh7pk' LIMIT 1   [ RunTime:0.0002s ]
+SQL: INSERT INTO `user` (`username`,`userid`,`password`) VALUES ('0qh7pk','000013','4e99e32f786740bfd64e339bd375c5f1') [ RunTime:0.1064s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002060s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002155s ]
+
+[ 2017-05-17T21:28:00+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/signup/username/blade/pwd/202cb962ac59075b964b07152d234b70
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000406s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000769s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000810s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0036s ]
+SQL: SELECT `id` FROM `user` ORDER BY id desc LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'blade' LIMIT 1   [ RunTime:0.0002s ]
+SQL: INSERT INTO `user` (`username`,`userid`,`password`) VALUES ('blade','000014','202cb962ac59075b964b07152d234b70') [ RunTime:0.0598s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002612s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002763s ]
+
+[ 2017-05-17T21:28:12+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/login/username/blade/pwd/202cb962ac59075b964b07152d234b70
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000371s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000586s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000625s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0033s ]
+SQL: SELECT `id` FROM `user` ORDER BY id desc LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'blade' AND `password` = '202cb962ac59075b964b07152d234b70' LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000657s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000704s ]
+
