@@ -31,31 +31,33 @@ public final class R {
     public static final class id {
         public static final int SignIn_button=0x7f080009;
         public static final int SignUp_button=0x7f08000a;
-        public static final int action_settings=0x7f08001a;
+        public static final int action_settings=0x7f08001c;
         public static final int content=0x7f080000;
+        public static final int here=0x7f080014;
         public static final int input_text=0x7f080007;
         public static final int left_layout=0x7f08000f;
-        public static final int left_msg=0x7f080010;
+        public static final int left_msg=0x7f080011;
         public static final int loginState=0x7f08000e;
         public static final int login_button=0x7f08000d;
         public static final int login_password=0x7f08000c;
         public static final int login_username=0x7f08000b;
-        public static final int logout=0x7f080019;
         public static final int msg_list_view=0x7f080006;
-        public static final int pic=0x7f080017;
+        public static final int pic=0x7f080019;
         public static final int radio0=0x7f080002;
         public static final int radio1=0x7f080003;
         public static final int radio2=0x7f080004;
         public static final int radio4=0x7f080005;
         public static final int radioGroup=0x7f080001;
-        public static final int right_layout=0x7f080011;
-        public static final int right_msg=0x7f080012;
+        public static final int right_layout=0x7f080012;
+        public static final int right_msg=0x7f080013;
         public static final int send=0x7f080008;
-        public static final int signupState=0x7f080016;
-        public static final int signup_password=0x7f080014;
-        public static final int signup_username=0x7f080013;
-        public static final int username=0x7f080018;
-        public static final int zhuce_button=0x7f080015;
+        public static final int signupState=0x7f080018;
+        public static final int signup_password=0x7f080016;
+        public static final int signup_username=0x7f080015;
+        public static final int talk=0x7f08001b;
+        public static final int there=0x7f080010;
+        public static final int username=0x7f08001a;
+        public static final int zhuce_button=0x7f080017;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

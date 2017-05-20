@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.example.adapter.MsgAdapter;
 import com.example.entity.Msg;
+import com.example.entity.User;
 import com.example.util.LogUtil;
 import com.example.wechat.R;
 
@@ -38,7 +39,8 @@ public class TalkActivity extends Activity {
 	
 	private DataOutputStream toServer;
 	
-	//private String username = User.getUser().getUserName();
+	private String username = User.getUser().getUserName();
+	//private String username = "blade";
 	
 	private Thread chat;
 	
@@ -57,14 +59,14 @@ public class TalkActivity extends Activity {
 				String content = inputText.getText().toString();
 				if (!"".equals(content)) {
 					try {
-						toServer.writeUTF("小明");
+						toServer.writeUTF(username);
 						toServer.writeUTF(content);
 						toServer.flush();
 					} catch (IOException e) {
 						LogUtil.d("MainActivity", "发送失败");
 					}
 					
-					Msg msg = new Msg(content, Msg.TYPE_SENT);
+					Msg msg = new Msg(username, content, Msg.TYPE_SENT);
 					msgList.add(msg);
 					adapter.notifyDataSetChanged();//当有新消息时，刷新ListView中的显示
 					msgListView.setSelection(msgList.size());//将ListView定位到最后一行
@@ -99,7 +101,7 @@ public class TalkActivity extends Activity {
 					String fromWhom = fromServer.readUTF();
 					String msgRec = fromServer.readUTF();
 					LogUtil.d("MainActivity", "接收成功");
-					Msg msg = new Msg(msgRec, Msg.TYPE_RECEIVED);
+					Msg msg = new Msg(fromWhom, msgRec, Msg.TYPE_RECEIVED);
 					LogUtil.d("MainActivity", "组装成功");
 					msgList.add(msg);
 					LogUtil.d("MainActivity", "添加成功");

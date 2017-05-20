@@ -4,36 +4,64 @@
     android:orientation="vertical"
     android:padding="10dp" >
     
-    <LinearLayout 
-        android:id="@+id/left_layout"
+    <LinearLayout
+        android:id="@+id/left_layout" 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:background="@drawable/m_l" >
+        android:orientation="horizontal">
         
         <TextView 
-            android:id="@+id/left_msg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:textColor="#fff" />
+        	android:id="@+id/there"
+        	android:layout_width="wrap_content"
+       	 	android:layout_height="wrap_content"
+        	android:textSize="12sp"
+        	android:text="There"/>
+    
+    	<LinearLayout 
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:background="@drawable/m_l" >
+        
+        	<TextView 
+            	android:id="@+id/left_msg"
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:layout_gravity="center"
+            	android:layout_margin="10dp"
+            	android:textColor="#fff" />
+        
+    	</LinearLayout>
         
     </LinearLayout>    
     
-    <LinearLayout 
-        android:id="@+id/right_layout"
+    <LinearLayout
+        android:id="@+id/right_layout" 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:background="@drawable/m_r" >
+        android:orientation="horizontal">
         
+        <LinearLayout 
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:background="@drawable/m_r" >
+        
+        	<TextView 
+           		android:id="@+id/right_msg"
+           		android:layout_width="wrap_content"
+           		android:layout_height="wrap_content"
+           		android:layout_gravity="center"
+           		android:layout_margin="10dp" />
+        
+    	</LinearLayout>
+    	
         <TextView 
-           android:id="@+id/right_msg"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_gravity="center"
-           android:layout_margin="10dp" />
+            android:id="@+id/here"
+        	android:layout_width="wrap_content"
+       	 	android:layout_height="wrap_content"
+        	android:textSize="12sp"
+        	android:text="Here"/>
         
     </LinearLayout>
 

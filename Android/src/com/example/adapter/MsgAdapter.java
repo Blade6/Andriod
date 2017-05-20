@@ -32,6 +32,8 @@ public class MsgAdapter extends ArrayAdapter<Msg> {
 			viewHolder = new ViewHolder();
 			viewHolder.leftLayout = (LinearLayout) view.findViewById(R.id.left_layout);
 			viewHolder.rightLayout = (LinearLayout) view.findViewById(R.id.right_layout);
+			viewHolder.leftUser = (TextView) view.findViewById(R.id.there);
+			viewHolder.rightUser = (TextView) view.findViewById(R.id.here);
 			viewHolder.leftMsg = (TextView) view.findViewById(R.id.left_msg);
 			viewHolder.rightMsg = (TextView) view.findViewById(R.id.right_msg);
 			view.setTag(viewHolder);
@@ -43,10 +45,12 @@ public class MsgAdapter extends ArrayAdapter<Msg> {
 			//如果是收到的消息，则显示左边的消息布局，将右边的消息布局隐藏
 			viewHolder.leftLayout.setVisibility(View.VISIBLE);
 			viewHolder.rightLayout.setVisibility(View.GONE);
+			viewHolder.leftUser.setText(msg.getSender());
 			viewHolder.leftMsg.setText(msg.getContent());
 		} else {
 			viewHolder.rightLayout.setVisibility(View.VISIBLE);
 			viewHolder.leftLayout.setVisibility(View.GONE);
+			viewHolder.rightUser.setText(msg.getSender());
 			viewHolder.rightMsg.setText(msg.getContent());
 		}
 		return view;
@@ -55,8 +59,12 @@ public class MsgAdapter extends ArrayAdapter<Msg> {
 	class ViewHolder {
 		
 		LinearLayout leftLayout;
-	
+		
 		LinearLayout rightLayout;
+		
+		TextView leftUser;
+		
+		TextView rightUser;
 		
 		TextView leftMsg;
 		
