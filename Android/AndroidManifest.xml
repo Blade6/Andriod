@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.activity.IndexActivity"
+            android:name="com.example.activity.TalkActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,6 +30,8 @@
         	android:name="com.example.activity.SignUpActivity"></activity>
         <activity
         	android:name="com.example.activity.MainActivity"></activity>
+        <activity
+        	android:name="com.example.activity.IndexActivity"></activity>
     </application>
 
 </manifest>
