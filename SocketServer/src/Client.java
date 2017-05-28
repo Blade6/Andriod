@@ -53,11 +53,12 @@ public class Client extends JFrame {
 		try {
 			// Create a socket to connect to the server
 			Socket socket = new Socket("localhost", 8089);
-			
 			fromServer = new DataInputStream(
 				socket.getInputStream());
 			toServer = new DataOutputStream(
 				socket.getOutputStream());
+			toServer.writeUTF(me);
+			toServer.flush();
 			
 			Thread recMsgThread = new Thread(new recMsg());
 			recMsgThread.start();

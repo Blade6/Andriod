@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+   <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
+        
+    </LinearLayout>
+ <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="@drawable/buttom"
+        android:gravity="center"
+        android:id="@+id/selectico">
+         <TextView android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:layout_marginLeft="20sp"
+            android:text="头像"/>
+        <ImageView android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="3"
+            android:layout_gravity="left"
+            android:id="@+id/ico"
+            android:layout_marginBottom="5sp"
+            android:src="@android:drawable/alert_dark_frame"/> 
+    </LinearLayout>
+<LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="@drawable/buttom"
+        android:gravity="center"
+        android:id="@+id/chengenanme">
+      <TextView android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:layout_marginLeft="20sp"
+            android:text="用户名"/>
+        <TextView android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="3"
+           android:gravity="left|center_vertical"
+           android:id="@+id/info_name"
+            android:text="小红"/> 
+    </LinearLayout>
+<LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="@drawable/buttom"
+        android:gravity="center">
+      <TextView android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:layout_marginLeft="20sp"
+            android:text="账号"/>
+        <TextView android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="3"
+           android:gravity="left|center_vertical"
+           android:id="@+id/info_id"
+            android:text="888888"/> 
+    </LinearLayout>   
+<LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="@drawable/buttom"
+        android:gravity="center"
+        android:id="@+id/chengesex">
+      <TextView android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:layout_marginLeft="20sp"
+            android:text="性别"/>
+        <TextView android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="3"
+            android:id="@+id/info_sex"
+           android:gravity="left|center_vertical"
+            android:text="女"/> 
+    </LinearLayout> 
+  <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="@drawable/buttom"
+        android:gravity="center"
+		android:id="@+id/chengedate">
+      <TextView android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:layout_marginLeft="20sp"
+            android:text="生日"/>
+        <TextView android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="3"
+            android:id="@+id/info_date"
+           android:gravity="left|center_vertical"
+            android:text="2017-01-01"/> 
+    </LinearLayout> 
+   <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" 
+        android:gravity="center">
+		<Button android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="确定"
+		    android:id="@+id/changeinfo"/>
+    </LinearLayout>
+             
+</LinearLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+     <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:id="@+id/newfriend"
+        android:background="@drawable/ll_customer_selector" >
+	    <TextView  
+	        android:layout_width="fill_parent"  
+	        android:layout_height="30sp"  
+	        android:textSize="15sp"
+	        android:gravity="center_vertical|left"
+	        android:layout_marginLeft="10sp"
+	        android:text="好友分享"
+	        android:background="@drawable/buttom"
+	        android:layout_gravity="left|center_vertical"
+	        android:layout_weight="1"/>  
+	     <TextView  
+	        android:layout_width="fill_parent"  
+	        android:layout_height="30sp"  
+	        android:textSize="30sp"
+	        android:layout_marginRight="20sp"
+	        android:text="+"
+	        android:id="@+id/addshare"
+	        android:background="@drawable/buttom"
+	        android:gravity="right|center_vertical"
+	        android:layout_weight="1"/>  
+    </LinearLayout>
+    <ListView 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/sharelist"
+        android:layout_weight="1"
+        android:dividerHeight="5dp"/>
+
+</LinearLayout>

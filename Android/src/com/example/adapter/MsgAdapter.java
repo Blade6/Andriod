@@ -3,7 +3,7 @@ package com.example.adapter;
 import java.util.List;
 
 import com.example.entity.Msg;
-import com.example.wechat.R;
+import com.example.mychat.R;
 
 import android.content.Context;
 import android.view.LayoutInflater;

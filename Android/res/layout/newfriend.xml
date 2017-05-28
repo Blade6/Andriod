@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="7">
+        <TextView         
+        
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="账号"
+        android:textSize="20sp"
+        android:gravity="center"/>
+        <EditText         
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttom"
+        android:id="@+id/findfriend_textview"
+        android:layout_weight="1"/>
+        <Button 
+         android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="查找"
+        android:layout_weight="2"
+        android:id="@+id/findnewfriend_button"
+        android:gravity="center"/>
+    </LinearLayout>
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
+        <ListView 
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:dividerHeight="5dp"
+	        android:id="@+id/newfriendlist">
+            
+        </ListView>
+    </LinearLayout>
+</LinearLayout>

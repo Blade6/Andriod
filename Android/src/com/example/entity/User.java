@@ -3,6 +3,7 @@ package com.example.entity;
 public class User {
 
 	private static User user; 
+	
 	private String userid;
 	private String username;
 	private String pwd;

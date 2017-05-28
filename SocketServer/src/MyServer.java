@@ -49,7 +49,6 @@ public class MyServer extends JFrame {
 			while (true) {
 				// Listen for a connection request
 				Socket socket = serverSocket.accept();
-				
 				// Create a new thread for the connection
 				HandleAClient task = new HandleAClient(socket);
 				
@@ -72,31 +71,45 @@ public class MyServer extends JFrame {
 
 		@Override
 		public void run() {
-			try {			
+			try {
 				DataInputStream inputFromClient = new DataInputStream(
 						socket.getInputStream());
-				DataOutputStream outputToTarget = new DataOutputStream(
-						socket.getOutputStream());
+				String user_join_in = inputFromClient.readUTF();
+				jta.append(user_join_in + "加入聊天室\n");
+				jta.append("------------------------" + '\n');
+
+				// 通知其他用户新用户上线
+				Set<Map.Entry<String, Socket>> sets = sockets.entrySet();
+				for (Entry<String, Socket> set : sets) {
+					DataOutputStream outputToClient = new DataOutputStream(
+						set.getValue().getOutputStream());
+					outputToClient.writeUTF("管理员");
+					outputToClient.writeUTF(user_join_in + "加入聊天室");
+				}
 				
-				while (true) {
-					boolean flag = false;
-					
+				// 如果之前没有该socket客户端的话
+				if (!sockets.containsKey(socket)) {
+					// 保存socket客户端
+					sockets.put(user_join_in, socket);
+				}
+				
+				while (true) {					
 					// Receive the client id
 					String fromId = inputFromClient.readUTF();															
 					// Receive the msg that client want to send
 					String msg = inputFromClient.readUTF();
 					
+					// 有用户退出聊天室，管理该用户的线程结束
+					if (msg.equals("exit")) {
+						sockets.remove(fromId);
+						break;
+					}
+					
 					jta.append("from: " + fromId + '\n');
 					jta.append("msg: " + msg + '\n');
 					jta.append("------------------------" + '\n');
 					
-					// 如果之前没有该socket客户端的话
-					if (!sockets.containsKey(socket)) {
-						// 保存socket客户端
-						sockets.put(fromId, socket);
-					}	
-					
-					Set<Entry<String, Socket>> sets = sockets.entrySet();
+					sets = sockets.entrySet();
 					for (Entry<String, Socket> set : sets) {
 						if (!set.getKey().equals(fromId)) {
 							DataOutputStream outputToClient = new DataOutputStream(
