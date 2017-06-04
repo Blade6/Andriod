@@ -10,108 +10,115 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
-        
-    </LinearLayout> 
-    
+    </LinearLayout>
+
     <LinearLayout 
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
+        android:gravity="center_horizontal"
         android:layout_weight="1">
-        <TextView android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="7"/>
-       <TextView android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:text="为了避免遗忘，请填写真实信息"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="为了避免遗忘，请填写真实信息"
+            android:textSize="18sp" />
     </LinearLayout>
+
     <LinearLayout 
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
         android:layout_marginBottom="10dp">
-       <TextView android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="7"
-            android:text="昵称"
-            android:gravity="center_vertical|center_horizontal"/>
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="昵称"
+                android:textSize="17sp"
+                android:paddingRight="10dp"
+                android:gravity="center_vertical|right"/>
+            <EditText
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               android:background="@drawable/edit"
+               android:id="@+id/username"/>
+    </LinearLayout>
+
+     <LinearLayout 
+         android:layout_width="fill_parent"
+         android:layout_height="match_parent"
+         android:layout_weight="1"
+         android:layout_marginLeft="50dp"
+         android:layout_marginRight="50dp"
+         android:layout_marginBottom="10dp">
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="fill_parent"
+             android:gravity="center_vertical|right"
+             android:text="密码"
+             android:paddingRight="10dp"
+             android:textSize="17sp" />
        <EditText
-           android:layout_width="248dp"
+           android:layout_width="fill_parent"
            android:layout_height="fill_parent"
            android:background="@drawable/edit"
-          android:layout_weight="1" 
-           android:layout_marginRight="20dp"
-           android:id="@+id/username"/>
-
-    </LinearLayout>    
-     <LinearLayout 
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_marginBottom="10dp">
-       <TextView android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="7"
-            android:text="密码"
-            android:gravity="center_vertical|center_horizontal"/>
-       <EditText
-           android:layout_width="248dp"
-           android:layout_height="fill_parent"
-           android:background="@drawable/edit" 
-           android:layout_weight="1"
-           android:layout_marginRight="20dp"
            android:id="@+id/password"/>
-       
     </LinearLayout>
+
     <LinearLayout 
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="17dp"
         android:layout_marginBottom="10dp">
-       <TextView android:layout_width="fill_parent"
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:layout_weight="7"
+            android:gravity="center_vertical|right"
             android:text="确认密码"
-            android:gravity="center_vertical|center_horizontal"/>
+            android:paddingRight="10dp"
+            android:textSize="17sp" />
        <EditText
-           android:layout_width="248dp"
-           android:layout_weight="1"
+           android:layout_width="match_parent"
            android:layout_height="fill_parent"
-           android:background="@drawable/edit" 
-           android:layout_marginRight="20dp"
+           android:background="@drawable/edit"
            android:id="@+id/password2"/>
         
     </LinearLayout>
+
      <LinearLayout 
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
+         android:layout_marginLeft="17dp"
         android:layout_weight="1">
-        <TextView android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="5"></TextView>
-       <TextView android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:text="密保问题"
-			android:gravity="center_vertical"/>
+         <TextView
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             android:gravity="center_vertical"
+             android:text="密保问题"
+             android:textSize="17sp" />
     </LinearLayout>
+
      <LinearLayout 
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+         android:layout_marginRight="50dp"
+         android:layout_marginLeft="30dp"
         android:layout_marginBottom="10dp">
-        <TextView android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="7"
-            android:text="问题一："
-            android:gravity="center_vertical|center_horizontal"
-            />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="fill_parent"
+             android:gravity="center_vertical|right"
+             android:text="问题一："
+             android:textSize="17sp" />
        <Spinner 
-           android:layout_width="248dp"
+           android:layout_width="match_parent"
            android:layout_height="fill_parent"
-           android:background="@drawable/edit" 
-           android:layout_weight="1"
-           android:layout_marginRight="20dp"
+           android:background="@drawable/edit"
            android:entries="@array/questions"
            android:id="@+id/question"/>
          
@@ -120,18 +127,21 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+         android:layout_marginRight="50dp"
+         android:layout_marginLeft="63dp"
        android:layout_marginBottom="10dp">
-          <TextView android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="7"
-            android:text="答："
-            android:gravity="center_vertical|right"/>
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="fill_parent"
+             android:gravity="center_vertical|right"
+             android:text="答："
+             android:textSize="17sp" />
        <EditText
            android:layout_width="248dp"
            android:layout_height="fill_parent"
            android:background="@drawable/edit" 
            android:layout_weight="1"
-           android:layout_marginRight="20dp"
            android:id="@+id/answer"/>
          
     </LinearLayout>
@@ -139,18 +149,20 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginBottom="10dp">
-        <TextView android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="7"
-            android:text="问题二："
-            android:gravity="center_vertical|center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical|right"
+        android:text="问题二："
+        android:textSize="17sp" />
        <Spinner 
-           android:layout_width="248dp"
+           android:layout_width="match_parent"
            android:layout_height="fill_parent"
-           android:background="@drawable/edit" 
-           android:layout_weight="1"
-           android:layout_marginRight="20dp"
+           android:background="@drawable/edit"
            android:entries="@array/questions"
            android:id="@+id/question2"/>
          
@@ -159,18 +171,21 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+         android:layout_marginLeft="63dp"
+         android:layout_marginRight="50dp"
        android:layout_marginBottom="10dp">
-          <TextView android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="7"
-            android:text="答："
-            android:gravity="center_vertical|right"/>
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="fill_parent"
+             android:gravity="center_vertical|right"
+             android:text="答："
+             android:textSize="17sp" />
        <EditText
            android:layout_width="248dp"
            android:layout_height="fill_parent"
            android:background="@drawable/edit" 
            android:layout_weight="1"
-           android:layout_marginRight="20dp"
            android:id="@+id/answer2"/>
          
     </LinearLayout>
@@ -178,12 +193,15 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:gravity="center|center_horizontal|center_vertical">
-        <Button android:layout_width="120dp"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="120dp"
             android:layout_height="fill_parent"
-            android:text="提交"
             android:layout_gravity="center_horizontal"
-            android:onClick="register"/>
+            android:onClick="register"
+            android:text="提交"
+            android:textSize="18sp" />
     </LinearLayout> 
     <LinearLayout 
         android:layout_width="fill_parent"

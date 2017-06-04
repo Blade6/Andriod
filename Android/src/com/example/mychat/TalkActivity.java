@@ -9,13 +9,14 @@ import java.util.List;
 
 import com.example.adapter.MsgAdapter;
 import com.example.entity.Msg;
-import com.example.entity.User;
 import com.example.common.LogUtil;
 import com.example.common.MyURL;
 import com.example.mychat.R;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -45,8 +46,9 @@ public class TalkActivity extends Activity {
 	
 	private DataOutputStream toServer;
 	
-	//private String username = User.getUser().getUserName();
-	private String username = "hjh";
+	private SharedPreferences sp;
+	
+	private String username = null;
 	
 	private Thread chat;
 	
@@ -55,6 +57,8 @@ public class TalkActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.chat);
+		sp = this.getSharedPreferences("userinfo", Context.MODE_WORLD_READABLE);
+		username = sp.getString("USERNAME", "someone");
 		quitRoom = (ImageButton) findViewById(R.id.quitRoom);
 		adapter = new MsgAdapter(TalkActivity.this, R.layout.msg_item, msgList);
 		inputText = (EditText) findViewById(R.id.input_text);

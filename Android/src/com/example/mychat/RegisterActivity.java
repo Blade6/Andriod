@@ -16,8 +16,10 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -63,6 +65,12 @@ public class RegisterActivity extends Activity {
 		String username_text = username.getText().toString();
 		String question_text = question.getSelectedItem().toString();
 		String question2_text = question2.getSelectedItem().toString();
+		
+		if (!password_text.equals(password2_text)) {
+			Toast.makeText(getApplicationContext(), "密码不一致",
+				     Toast.LENGTH_SHORT).show();
+			return ;
+		}
 		
 		AsyncHttpClient client = new AsyncHttpClient();
 		//填充数据

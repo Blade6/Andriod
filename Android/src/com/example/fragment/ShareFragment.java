@@ -67,8 +67,8 @@ public class ShareFragment extends Fragment {
 //		List<Map<String, Object>>  result = new ArrayList<Map<String, Object>>();
 //		   AsyncHttpClient client = new AsyncHttpClient();
 //		   RequestParams params = new RequestParams();
-//		   String username_text = sp.getString("USERNAME", "");
-//		   params.put("userid", username_text);
+//		   String userid = sp.getString("USERID", "");
+//		   params.put("userid", userid);
 //		   client.post(MyURL.LoginURL, params, new JsonHttpResponseHandler(){
 //			   ArrayList<Share>  result = new ArrayList<Share>();
 //			   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {

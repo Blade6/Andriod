@@ -79,8 +79,8 @@ public class FrdFragment extends Fragment {
 		
 //	   AsyncHttpClient client = new AsyncHttpClient();
 //	   RequestParams params = new RequestParams();
-//	   String username_text = sp.getString("USERNAME", "");
-//	   params.put("userid", username_text);
+//	   String userid = sp.getString("USERID", "");
+//	   params.put("userid", userid);
 //	   client.post(MyURL.FriendsURL, params, new JsonHttpResponseHandler(){
 //		   ArrayList<Friend>  result = new ArrayList<Friend>();
 //		   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {

@@ -192,8 +192,8 @@ public class MyFragment extends Fragment {
 			public void onClick(View v) {	
 //				   AsyncHttpClient client = new AsyncHttpClient();
 //				   RequestParams params = new RequestParams();
-//				   String username_text = sp.getString("USERNAME", "");
-//				   params.put("userid", username_text);
+//				   String userid = sp.getString("USERID", "");
+//				   params.put("userid", userid);
 //				   client.post(MyURL.LoginURL, params, new JsonHttpResponseHandler(){
 //					   ArrayList<Share>  result = null;
 //					   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {

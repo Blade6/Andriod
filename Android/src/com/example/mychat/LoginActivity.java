@@ -1,6 +1,9 @@
 package com.example.mychat;
 
+import org.json.JSONObject;
+
 import com.example.common.AtyContainer;
+import com.example.common.LogUtil;
 import com.example.common.MD5;
 import com.example.common.MyURL;
 import com.loopj.android.http.*;
@@ -72,8 +75,8 @@ public class LoginActivity extends Activity {
 		params.put("pwd", MD5.getMd5(password_text));
 		
 		//这个是测试的而已
-		Intent intent = new Intent(LoginActivity.this,IndexActivity.class);  
-        LoginActivity.this.startActivity(intent); 
+		//Intent intent = new Intent(LoginActivity.this,IndexActivity.class);  
+        //LoginActivity.this.startActivity(intent); 
         
         //发送请求
 		client.post(MyURL.LoginURL, params, new JsonHttpResponseHandler(){
@@ -83,7 +86,10 @@ public class LoginActivity extends Activity {
 					int returnCode =  (Integer) response.get("returnCode");
 					//登录成功
 					if(returnCode == 1){
+						JSONObject data = response.getJSONObject("data");
+						String userid = data.getString("userid");
 						//记住密码勾选
+						editor.putString("USERID", userid);
 						editor.putString("USERNAME", username_text);
 						editor.putString("PASSWORD", MD5.getMd5(password_text));
 						if(remember_text){				
