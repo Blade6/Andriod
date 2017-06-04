@@ -1,10 +1,6 @@
 package com.example.fragment;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,9 +10,6 @@ import com.example.adapter.FriendAdapter;
 import com.example.common.MyURL;
 import com.example.entity.Friend;
 import com.example.mychat.R;
-import com.example.mychat.R.drawable;
-import com.example.mychat.R.id;
-import com.example.mychat.R.layout;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -25,18 +18,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
@@ -62,7 +50,6 @@ public class FrdFragment extends Fragment {
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onViewCreated(view, savedInstanceState);
 		context = this.getActivity().getApplicationContext();
 		listView=(ListView) view.findViewById(R.id.friends);
@@ -76,35 +63,40 @@ public class FrdFragment extends Fragment {
 		findfriend_textview = (EditText) view.findViewById(R.id.findfriend_textview);
 		sp = this.getActivity().getSharedPreferences("userinfo", Context.MODE_WORLD_READABLE);
 		
-		
-//	   AsyncHttpClient client = new AsyncHttpClient();
-//	   RequestParams params = new RequestParams();
-//	   String userid = sp.getString("USERID", "");
-//	   params.put("userid", userid);
-//	   client.post(MyURL.FriendsURL, params, new JsonHttpResponseHandler(){
-//		   ArrayList<Friend>  result = new ArrayList<Friend>();
-//		   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
-//			   try { 
-//				   Friend f = new Friend();
-//				    JSONArray jsonArray = (JSONArray) response.get("data");
-//				    for(int i=0;i<jsonArray.length();i++){
-//				    	JSONObject ob = (JSONObject) jsonArray.get(i);
-//				    	f.setImg(ob.getInt("img"));
-//				        f.setName(ob.getString("name"));
-//				        result.add(f);
-//				    }
-//				    FriendAdapter adapter = new FriendAdapter(context,result);
-//					listView.setAdapter(adapter);  
-//			} catch (JSONException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			};
-//		});
-
 		//≤‚ ‘
-		FriendAdapter adapter = new FriendAdapter(context,getData());
-		listView.setAdapter(adapter); 
+//		FriendAdapter adapter = new FriendAdapter(context,getData());
+//		listView.setAdapter(adapter); 
+		
+		AsyncHttpClient client = new AsyncHttpClient();
+		   RequestParams params = new RequestParams();
+		   String userid = sp.getString("USERID", "");
+		   params.put("userid", userid);
+		   client.post(MyURL.FriendsURL, params, new JsonHttpResponseHandler(){
+			   ArrayList<Friend>  result = new ArrayList<Friend>();
+			   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
+				   try {
+					    int returnCode =  (Integer) response.get("returnCode");
+					    if (returnCode == 1) {
+					    	JSONArray jsonArray = (JSONArray) response.get("data");
+						    for(int i=0;i<jsonArray.length();i++){
+						    	JSONObject ob = (JSONObject) jsonArray.get(i);
+						    	Friend f = new Friend();
+						    	f.setImg(R.drawable.tab_find_frd_normal);
+						    	if (ob.has("frename")) {
+						    		f.setName(ob.getString("frename"));
+						    	} else {
+						    		f.setName(ob.getString("username"));
+						    	}
+						        result.add(f);
+						    }
+					    }
+					    FriendAdapter adapter = new FriendAdapter(context,result);
+						listView.setAdapter(adapter);  
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+				};
+			});
 		
 		newfriend.setOnClickListener(new OnClickListener() {
 			
@@ -137,30 +129,35 @@ public class FrdFragment extends Fragment {
 					//≤‚ ‘
 					FriendAdapter adapter = new FriendAdapter(context,getData());
 					newfriendlist.setAdapter(adapter); 
-					
-//					newfriendlist.setAdapter(adapter);  
+					  
 //					AsyncHttpClient client = new AsyncHttpClient();
 //					   RequestParams params = new RequestParams();
-//					   String username_text = sp.getString("USERNAME", "");
-//					   params.put("userid", username_text);
+//					   String userid = sp.getString("USERID", "");
+//					   params.put("userid", userid);
 //					   params.put("username", findName);
-//					   client.post(MyURL.FriendsURL, params, new JsonHttpResponseHandler(){
+//					   client.post(MyURL.FindfriendURL, params, new JsonHttpResponseHandler(){
 //						   ArrayList<Friend>  result = new ArrayList<Friend>();
 //						   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
 //							   try {
-//								   
-//								   Friend f = new Friend();
-//								    JSONArray jsonArray = (JSONArray) response.get("data");
-//								    for(int i=0;i<jsonArray.length();i++){
-//								    	JSONObject ob = (JSONObject) jsonArray.get(i);
-//								    	f.setImg(ob.getInt("img"));
-//								        f.setName(ob.getString("name"));
-//								        result.add(f);
+//								    int returnCode =  (Integer) response.get("returnCode");
+//								    
+//								    if (returnCode == 1) {
+//								    	JSONArray jsonArray = (JSONArray) response.get("data");
+//									    for(int i=0;i<jsonArray.length();i++){
+//									    	JSONObject ob = (JSONObject) jsonArray.get(i);
+//									    	Friend f = new Friend();
+//									    	f.setImg(R.drawable.tab_find_frd_normal);
+//									    	if (ob.has("frename")) {
+//									    		f.setName(ob.getString("frename"));
+//									    	} else {
+//									    		f.setName(ob.getString("username"));
+//									    	}
+//									        result.add(f);
+//									    }
 //								    }
 //								    FriendAdapter adapter = new FriendAdapter(context,result);
 //									newfriendlist.setAdapter(adapter);  
 //							} catch (JSONException e) {
-//								// TODO Auto-generated catch block
 //								e.printStackTrace();
 //							}
 //							};
@@ -170,14 +167,12 @@ public class FrdFragment extends Fragment {
 			}
 		});	
 	}
+
 	
 	
-	
-	
-//≤‚ ‘ ˝æ›	
+		//≤‚ ‘ ˝æ›	
 	   private ArrayList<Friend> getData() {
-		   
-		   //≤‚ ‘
+		   	//≤‚ ‘
 		    ArrayList<Friend> list = new ArrayList<Friend>();
 	        Friend f = new Friend();
 	        f.setName("chen");

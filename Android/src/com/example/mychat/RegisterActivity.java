@@ -36,7 +36,7 @@ public class RegisterActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		
 		setContentView(R.layout.activity_register);
 		AtyContainer.getInstance().addActivity(this);
@@ -76,7 +76,6 @@ public class RegisterActivity extends Activity {
 		//Ìî³äÊý¾Ý
 		RequestParams params = new RequestParams();
 		params.put("password", password_text);
-		params.put("clearPed", password2_text);
 		params.put("username", username_text);	
 		params.put("questionOne", question_text);
 		params.put("answerOne", answer_text);

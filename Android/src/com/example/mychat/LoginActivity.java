@@ -33,7 +33,7 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//取消标题栏
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_login);
 		AtyContainer.getInstance().addActivity(this);
 		//获取控件 
@@ -54,7 +54,6 @@ public class LoginActivity extends Activity {
 	}
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
 		AtyContainer.getInstance().removeActivity(this);
 	}
@@ -73,10 +72,6 @@ public class LoginActivity extends Activity {
 		RequestParams params = new RequestParams();
 		params.put("username", username_text);
 		params.put("pwd", MD5.getMd5(password_text));
-		
-		//这个是测试的而已
-		//Intent intent = new Intent(LoginActivity.this,IndexActivity.class);  
-        //LoginActivity.this.startActivity(intent); 
         
         //发送请求
 		client.post(MyURL.LoginURL, params, new JsonHttpResponseHandler(){
@@ -105,7 +100,6 @@ public class LoginActivity extends Activity {
 					}
 					
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				

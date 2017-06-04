@@ -1,0 +1,42 @@
+[ 2017-05-27T16:11:16+08:00 ] 10.173.166.27 /wechat/index.php/Home/User/login/username/blade/pwd/202cb962ac59075b964b07152d234b70
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.080871s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.040465s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.040534s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.1840s ]
+SQL: SELECT `id` FROM `user` ORDER BY id desc LIMIT 1   [ RunTime:0.0512s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'blade' AND `password` = '202cb962ac59075b964b07152d234b70' LIMIT 1   [ RunTime:0.0228s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.022256s ]
+INFO: [ app_end ] --END-- [ RunTime:0.022322s ]
+
+[ 2017-05-27T16:15:42+08:00 ] 10.173.166.27 /wechat/index.php/Home/User/login/username/blade/pwd/202cb962ac59075b964b07152d234b70
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000365s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000536s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000584s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0031s ]
+SQL: SELECT `id` FROM `user` ORDER BY id desc LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'blade' AND `password` = '202cb962ac59075b964b07152d234b70' LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000903s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000971s ]
+
+[ 2017-05-27T16:55:39+08:00 ] 10.173.166.27 /wechat/index.php/Home/User/login/username/blade/pwd/202cb962ac59075b964b07152d234b70
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000393s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000487s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000525s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0365s ]
+SQL: SELECT `id` FROM `user` ORDER BY id desc LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'blade' AND `password` = '202cb962ac59075b964b07152d234b70' LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000578s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000627s ]
+

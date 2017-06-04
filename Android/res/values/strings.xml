@@ -10,7 +10,7 @@
     <string name="login_button">登陆</string>
     <string name="register_button">注册</string>
     <string name="title_activity_index">IndexActivity</string>
-    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_register">注册页面</string>
 
     <string-array name="questions">
         <item>您的家乡在哪里？</item>

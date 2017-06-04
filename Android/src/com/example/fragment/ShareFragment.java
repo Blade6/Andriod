@@ -1,7 +1,6 @@
 package com.example.fragment;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,7 +8,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.adapter.FriendAdapter;
 import com.example.adapter.ShareAdapter;
 import com.example.common.MyURL;
 import com.example.entity.Friend;
@@ -64,41 +62,41 @@ public class ShareFragment extends Fragment {
 		sharetext = (EditText) view.findViewById(R.id.sharetext);
 		shareimg = (ImageView) view.findViewById(R.id.shareimg);
 		sp = this.getActivity().getSharedPreferences("userinfo", Context.MODE_WORLD_READABLE);
-//		List<Map<String, Object>>  result = new ArrayList<Map<String, Object>>();
-//		   AsyncHttpClient client = new AsyncHttpClient();
-//		   RequestParams params = new RequestParams();
-//		   String userid = sp.getString("USERID", "");
-//		   params.put("userid", userid);
-//		   client.post(MyURL.LoginURL, params, new JsonHttpResponseHandler(){
-//			   ArrayList<Share>  result = new ArrayList<Share>();
-//			   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
-//				   try { 
-//					   Share s = new Share();
-//					    JSONArray jsonArray = (JSONArray) response.get("data");
-//					    for(int i=0;i<jsonArray.length();i++){
-//					    	JSONObject ob = (JSONObject) jsonArray.get(i);
-//					    	s.setIco(ob.getInt("ico"));
-//					    	s.setImg(ob.getInt("img"));
-//					    	s.setTitle(ob.getString("title"));
-//					    	s.setUsername(ob.getString("name"));
-//					        result.add(s);
-//					    }
-//					    ShareAdapter adapter = new ShareAdapter(context,result);
-//					    sharelist.setAdapter(adapter);  
-//				} catch (JSONException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//				};
-//			});
+		List<Map<String, Object>>  result = new ArrayList<Map<String, Object>>();
+		   AsyncHttpClient client = new AsyncHttpClient();
+		   RequestParams params = new RequestParams();
+		   String userid = sp.getString("USERID", "");
+		   params.put("userid", userid);
+		   client.post(MyURL.LoginURL, params, new JsonHttpResponseHandler(){
+			   ArrayList<Share>  result = new ArrayList<Share>();
+			   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
+				   try { 
+					   Share s = new Share();
+					    JSONArray jsonArray = (JSONArray) response.get("data");
+					    for(int i=0;i<jsonArray.length();i++){
+					    	JSONObject ob = (JSONObject) jsonArray.get(i);
+					    	s.setIco(ob.getInt("ico"));
+					    	s.setImg(ob.getInt("img"));
+					    	s.setTitle(ob.getString("title"));
+					    	s.setUsername(ob.getString("name"));
+					        result.add(s);
+					    }
+					    ShareAdapter adapter = new ShareAdapter(context,result);
+					    sharelist.setAdapter(adapter);  
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				};
+			});
 		
 		
 		//²âÊÔ
 		
 		
-		ArrayList<Share> data= getData();
-		ShareAdapter adapter = new ShareAdapter(getActivity(), data);
-		sharelist.setAdapter(adapter);
+//		ArrayList<Share> data= getData();
+//		ShareAdapter adapter = new ShareAdapter(getActivity(), data);
+//		sharelist.setAdapter(adapter);
 		
 		
 		addshare.setOnClickListener(new OnClickListener() {

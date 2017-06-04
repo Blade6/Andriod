@@ -1,0 +1,14 @@
+[ 2017-05-23T15:12:08+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/login/username/blade/pwd/202cb962ac59075b964b07152d234b70
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.047634s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.018317s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.018385s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0976s ]
+SQL: SELECT `id` FROM `user` ORDER BY id desc LIMIT 1   [ RunTime:0.0181s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'blade' AND `password` = '202cb962ac59075b964b07152d234b70' LIMIT 1   [ RunTime:0.0124s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.010273s ]
+INFO: [ app_end ] --END-- [ RunTime:0.010340s ]
+

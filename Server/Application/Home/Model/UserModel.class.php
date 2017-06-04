@@ -15,40 +15,47 @@ namespace Home\Model;
 use Think\Model;
 class UserModel extends Model {
     
-    private $user;
     // 插入的id
     private $insertID;
     
     public function __construct() {
-        $this->user = M('user');
-        
-        $result = $this->user->field('id')->order('id desc')->find();
+        $user = M('user');
+        $result = $user->field('id')->order('id desc')->find();
         $this->insertID = (int)$result["id"];
     }
     
-    public function getInsertID() {      
-        return $this->insertID;
+    public function userSignup($username,$password,$quetionOne,$answerOne,$quetionTwo,$answerTwo) {
+        // 先检验用户名是否存在
+        $user=M('user');
+        $data['username']=$username;
+        if($user->where($data)->find()) return -1;
+        
+        $this->insertID+=1;
+        $userid=  str_pad($this->insertID, 6, '0', STR_PAD_LEFT);
+        $data['userid']=$userid;
+        $data['passward']=$password;
+        $data['Q1']=$quetionOne;
+        $data['A1']=$answerOne;
+        $data['Q2']=$quetionTwo;
+        $data['A2']=$answerTwo;
+        $result=$user->data($data)->add();
+        if($result) return $userid;
+        else return 0;
     }
     
     public function userLogin($username, $pwd) {
+        $user = M('user');
         $data['username'] = $username;
         $data['password'] = $pwd;
-        $result = $this->user->where($data)->find();
+        $result = $user->where($data)->find();
         return $result;
     }
     
-    public function userSignup($username, $pwd) {
-        // 先检验用户名是否存在
-        $data['username'] = $username;
-        if ($this->user->where($data)->find()) return -1;
-        
-        $this->insertID += 1;
-        $userid = str_pad($this->insertID, 6, "0", STR_PAD_LEFT);
-        $data['userid'] = $userid;
-        $data['password'] = $pwd;
-        
-	if($this->user->add($data)) return $userid;
-	else return 0;
+    public function getUserId($username) {
+        $user = M('user');
+        $condition['username'] = $username;
+        $result = $user->where($condition)->find();
+        return $result["userid"];
     }
     
 }
