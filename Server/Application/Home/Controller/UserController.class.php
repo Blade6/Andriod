@@ -3,6 +3,7 @@ namespace Home\Controller;
 use Think\Controller;
 use Home\Event\JsonEvent;
 use Home\Model\FriendsModel;
+use Home\Model\MomentModel;
 class UserController extends Controller {
     
     // 登录
@@ -55,7 +56,7 @@ class UserController extends Controller {
         echo json_encode($json,JSON_UNESCAPED_UNICODE);
     }
     
-    //搜索账号接口
+    // 搜索账号接口
     public function search($userid,$searchname){
         $result=D('user')->getUserId($searchname);
         $json = (new JsonEvent())->encapsulate($result, "searchinfo");
@@ -63,11 +64,49 @@ class UserController extends Controller {
         echo json_encode($json,JSON_UNESCAPED_UNICODE);
     }
     
+    // 添加好友
+    public function addFriend($userid,$friendid){
+        $find1=(new FriendsModel())->findFriends1($userid, $friendid);
+        $find2=(new FriendsModel())->findFriends2($userid, $friendid);
+        if($find1||$find2){
+            $json['returnCode'] = 0;
+            $json['msg'] = "fail";
+        }else {
+            $username = D('user')->getUserName($userid);
+            $frename = D('user')->getUserName($friendid);
+            $result=D('friends')->addFriends($userid,$username,$friendid,$frename);
+            $json['returnCode'] = 1;
+            $json['msg'] = "success";
+        }
+        header('Content-type:text/json');
+        echo json_encode($json,JSON_UNESCAPED_UNICODE);
+    }
+    
+    // 获取动态
     public function getShare($userid) {
        
     }
     
-     //获取个人信息中的相册
+    //发朋友圈
+    public function share($userid,$words,$image){
+        if($this->islegal($userid)){
+            $result=D('moment')->shareMoment($userid,$words,$image);
+            if($result){
+                $json['returnCode'] = 1;
+                $json['msg'] = "success";
+            }  else {
+                $json['returnCode'] = 0;
+                $json['msg'] = "fail";
+            }
+        }else {
+                $json['returnCode'] = 0;
+                $json['msg'] = "fail";
+            }
+        header('Content-type:text/json');
+        echo json_encode($json,JSON_UNESCAPED_UNICODE);
+    }
+    
+    // 获取个人信息中的相册
     public function getUserShare($userid){
         $share=D('moment')->getMoments($userid);
         $json = (new JsonEvent())->encapsulate($share, "userShare");
@@ -75,5 +114,15 @@ class UserController extends Controller {
         echo json_encode($json,JSON_UNESCAPED_UNICODE);
     }
     
+    // 修改密码
+    public function changeUserpwd($userid,$oldpwd,$oldpwd){
+       $pwd=(new UserModel())->userPwd($userid);
+       if($pwd==$oldpwd){
+            $result=(new UserModel())->changePwd($userid, $newpwd);
+       }
+        $json=(new JsonEvent())->encapsulate($result, 'userinfo');
+        header('Content-type:text/json');
+        echo json_encode($json,JSON_UNESCAPED_UNICODE); 
+    }
     
 }

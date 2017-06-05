@@ -9,6 +9,6 @@
             android:dividerHeight="5dp"
             android:id="@+id/friends"
             android:background="@android:color/white">         
-        </ListView>
+         </ListView>
 
 </LinearLayout>

@@ -17,22 +17,21 @@ public class FriendAdapter extends BaseAdapter{
 
 	private Context context;
 	private ArrayList<Friend> data;
+	
 	public FriendAdapter(Context context,ArrayList<Friend> data){
 		this.context = context;
 		this.data = data;
 	}
+	
 	public int getCount() {
-		// TODO Auto-generated method stub
 		return data.size();
 	}
 
 	public Object getItem(int arg0) {
-		// TODO Auto-generated method stub
 		return data.get(arg0);
 	}
 
 	public long getItemId(int arg0) {
-		// TODO Auto-generated method stub
 		return arg0;
 	}
 
@@ -55,6 +54,7 @@ public class FriendAdapter extends BaseAdapter{
         holder.name.setText(f.getName());
         return convertView;
 	}
+	
 	class ViewHolder{
 		ImageView img;
 		TextView name;

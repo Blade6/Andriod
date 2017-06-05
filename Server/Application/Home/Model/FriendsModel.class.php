@@ -10,16 +10,15 @@ namespace Home\Model;
 use Think\Model;
 
 class FriendsModel extends Model{
-    //put your code here
+
     public function getUserFriends1($userid){
        $friends=M('friends');
-//       $data['userid']=$userid;
        $result=$friends->query("select frename from `friends` where userid='$userid' ");
        return $result;
     }
+    
     public function getUserFriends2($freid){
        $friends=M('friends');  
-//       $data['freid']=$freid;
        $result=$friends->query("select username from `friends` where freid='$freid' ");
        return $result;
     }
@@ -35,11 +34,6 @@ class FriendsModel extends Model{
         $result=$friends->query("select * from `friends` where userid='$friendId'and freid='$userid' ");
         return $result;
     }
-//    public function getUser($userid){
-//        $friends=M('friends');
-//        $result=$friends->query("select username from `friends` where userid='$userid' ");
-//        return $result;
-//    }
 
     public function addFriends($userid,$username,$friendId,$frename){
        $friends=M('friends'); 

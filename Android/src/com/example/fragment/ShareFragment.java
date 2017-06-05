@@ -84,7 +84,6 @@ public class ShareFragment extends Fragment {
 					    ShareAdapter adapter = new ShareAdapter(context,result);
 					    sharelist.setAdapter(adapter);  
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				};

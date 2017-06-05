@@ -38,7 +38,7 @@ class UserModel extends Model {
         $userid=  str_pad($this->insertID, 6, '0', STR_PAD_LEFT);
         $data['id'] = $this->insertID;
         $data['userid']=$userid;
-        $data['passward']=$password;
+        $data['password']=$password;
         $data['Q1']=$questionOne;
         $data['A1']=$answerOne;
         $data['Q2']=$questionTwo;
@@ -61,6 +61,12 @@ class UserModel extends Model {
         $condition['username'] = $username;
         $result = $user->where($condition)->find();
         return $result["userid"];
+    }
+    
+    public function getUserName($userid) {
+        $data["userid"] = $userid;
+        $re=M('user')->where($data)->find();
+        return $re["username"];
     }
     
 }

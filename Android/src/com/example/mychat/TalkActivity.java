@@ -29,27 +29,16 @@ import android.widget.ListView;
 public class TalkActivity extends Activity {
 
 	private ImageButton quitRoom;
-	
 	private ListView msgListView;
-	
 	private EditText inputText;
-	
 	private Button send;
-	
 	private MsgAdapter adapter;
-	
 	private List<Msg> msgList = new ArrayList<Msg>();
-	
 	private Socket socket;
-	
 	private DataInputStream fromServer;
-	
 	private DataOutputStream toServer;
-	
 	private SharedPreferences sp;
-	
 	private String username = null;
-	
 	private Thread chat;
 	
 	@Override

@@ -73,12 +73,13 @@ public class RegisterActivity extends Activity {
 				     Toast.LENGTH_SHORT).show();
 			return ;
 		}
+		password_text = MD5.getMd5(password_text);
 		
 		AsyncHttpClient client = new AsyncHttpClient();
 		//Ìî³äÊý¾Ý
 		RequestParams params = new RequestParams();
 		params.put("username", username_text);
-		params.put("password", MD5.getMd5(password_text));
+		params.put("password", password_text);
 		params.put("questionOne", question_text);
 		params.put("answerOne", answer_text);
 		params.put("questionTwo", question2_text);

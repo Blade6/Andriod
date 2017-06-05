@@ -23,5 +23,15 @@ class MomentModel extends Model {
     public function getMoments($userid) {
         $data['userid'] = $userid;
         $result = $this->moment->where($data)->select();
+        return $result;
+    }
+    
+    
+    public function shareMoment($userid,$words,$image){
+        $data['userid']=$userid;
+        $data['words']=$words;
+        $data['image']=$image;
+        $result=  $this->moment->data($data)->add();
+        return $result;
     }
 }
