@@ -63,10 +63,6 @@ public class FrdFragment extends Fragment {
 		findfriend_textview = (EditText) view.findViewById(R.id.findfriend_textview);
 		sp = this.getActivity().getSharedPreferences("userinfo", Context.MODE_WORLD_READABLE);
 		
-		//测试
-//		FriendAdapter adapter = new FriendAdapter(context,getData());
-//		listView.setAdapter(adapter); 
-		
 		AsyncHttpClient client = new AsyncHttpClient();
 		   RequestParams params = new RequestParams();
 		   String userid = sp.getString("USERID", "");
@@ -125,70 +121,39 @@ public class FrdFragment extends Fragment {
 					Toast.makeText(context, "请输入信息",
 						     Toast.LENGTH_SHORT).show();
 				}else{
-					
-					//测试
-					FriendAdapter adapter = new FriendAdapter(context,getData());
-					newfriendlist.setAdapter(adapter); 
 					  
-//					AsyncHttpClient client = new AsyncHttpClient();
-//					   RequestParams params = new RequestParams();
-//					   String userid = sp.getString("USERID", "");
-//					   params.put("userid", userid);
-//					   params.put("username", findName);
-//					   client.post(MyURL.FindfriendURL, params, new JsonHttpResponseHandler(){
-//						   ArrayList<Friend>  result = new ArrayList<Friend>();
-//						   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
-//							   try {
-//								    int returnCode =  (Integer) response.get("returnCode");
-//								    
-//								    if (returnCode == 1) {
-//								    	JSONArray jsonArray = (JSONArray) response.get("data");
-//									    for(int i=0;i<jsonArray.length();i++){
-//									    	JSONObject ob = (JSONObject) jsonArray.get(i);
-//									    	Friend f = new Friend();
-//									    	f.setImg(R.drawable.tab_find_frd_normal);
-//									    	if (ob.has("frename")) {
-//									    		f.setName(ob.getString("frename"));
-//									    	} else {
-//									    		f.setName(ob.getString("username"));
-//									    	}
-//									        result.add(f);
-//									    }
-//								    }
-//								    FriendAdapter adapter = new FriendAdapter(context,result);
-//									newfriendlist.setAdapter(adapter);  
-//							} catch (JSONException e) {
-//								e.printStackTrace();
-//							}
-//							};
-//						});
+					AsyncHttpClient client = new AsyncHttpClient();
+					   RequestParams params = new RequestParams();
+					   String userid = sp.getString("USERID", "");
+					   params.put("userid", userid);
+					   params.put("searchname", findName);
+					   client.post(MyURL.FindfriendURL, params, new JsonHttpResponseHandler(){
+						   ArrayList<Friend>  result = new ArrayList<Friend>();
+						   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
+							   try {
+								    int returnCode =  (Integer) response.get("returnCode");
+								    
+								    if (returnCode == 1) {
+								    	String user = response.getString("data");
+									    Friend f = new Friend();
+									    f.setImg(R.drawable.tab_find_frd_normal);
+									    f.setName(user);
+									    result.add(f);
+								    } else {
+								    	Toast.makeText(context, "未搜索到任何结果",
+											     Toast.LENGTH_SHORT).show();
+								    }
+								    FriendAdapter adapter = new FriendAdapter(context,result);
+									newfriendlist.setAdapter(adapter);  
+							   } catch (JSONException e) {
+								   e.printStackTrace();
+							   }
+							};
+						});
 				}
 				 
 			}
 		});	
 	}
-
-	
-	
-		//测试数据	
-	   private ArrayList<Friend> getData() {
-		   	//测试
-		    ArrayList<Friend> list = new ArrayList<Friend>();
-	        Friend f = new Friend();
-	        f.setName("chen");
-	        f.setImg(R.drawable.tab_find_frd_normal);
-	        list.add(f);
-	        Friend f2 = new Friend();
-	        f2.setName("chen2");
-	        f2.setImg(R.drawable.tab_find_frd_normal);
-	        list.add(f2);	        
-	        Friend f3 = new Friend();
-	        f3.setName("chen3");
-	        f3.setImg(R.drawable.tab_find_frd_normal);
-	        list.add(f3);	         
-	        return list;
-	    }
-	   
-
 	   
 }

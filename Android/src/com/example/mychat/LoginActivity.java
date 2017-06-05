@@ -47,8 +47,6 @@ public class LoginActivity extends Activity {
 			username.setText(sp.getString("USERNAME", ""));
 			password.setText(sp.getString("PASSWORD", ""));
 			remember.setChecked(true);
-            Intent intent = new Intent(LoginActivity.this,IndexActivity.class);
-            LoginActivity.this.startActivity(intent);  
 		}
 		
 	}
@@ -86,7 +84,7 @@ public class LoginActivity extends Activity {
 						//¼Ç×¡ÃÜÂë¹´Ñ¡
 						editor.putString("USERID", userid);
 						editor.putString("USERNAME", username_text);
-						editor.putString("PASSWORD", MD5.getMd5(password_text));
+						editor.putString("PASSWORD", password_text);
 						if(remember_text){				
 							editor.putBoolean("REMEMBER", true);
 						}

@@ -24,7 +24,11 @@ class UserModel extends Model {
         $this->insertID = (int)$result["id"];
     }
     
-    public function userSignup($username,$password,$quetionOne,$answerOne,$quetionTwo,$answerTwo) {
+    public function getinsertID() {
+        return $this->insertID;
+    }
+    
+    public function userSignup($username,$password,$questionOne,$answerOne,$questionTwo,$answerTwo) {
         // 先检验用户名是否存在
         $user=M('user');
         $data['username']=$username;
@@ -32,11 +36,12 @@ class UserModel extends Model {
         
         $this->insertID+=1;
         $userid=  str_pad($this->insertID, 6, '0', STR_PAD_LEFT);
+        $data['id'] = $this->insertID;
         $data['userid']=$userid;
         $data['passward']=$password;
-        $data['Q1']=$quetionOne;
+        $data['Q1']=$questionOne;
         $data['A1']=$answerOne;
-        $data['Q2']=$quetionTwo;
+        $data['Q2']=$questionTwo;
         $data['A2']=$answerTwo;
         $result=$user->data($data)->add();
         if($result) return $userid;

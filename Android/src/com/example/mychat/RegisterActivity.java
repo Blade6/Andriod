@@ -1,6 +1,8 @@
 package com.example.mychat;
 
 import com.example.common.AtyContainer;
+import com.example.common.LogUtil;
+import com.example.common.MD5;
 import com.example.common.MyURL;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -75,8 +77,8 @@ public class RegisterActivity extends Activity {
 		AsyncHttpClient client = new AsyncHttpClient();
 		//Ìî³äÊý¾Ý
 		RequestParams params = new RequestParams();
-		params.put("password", password_text);
-		params.put("username", username_text);	
+		params.put("username", username_text);
+		params.put("password", MD5.getMd5(password_text));
 		params.put("questionOne", question_text);
 		params.put("answerOne", answer_text);
 		params.put("questionTwo", question2_text);
@@ -93,7 +95,6 @@ public class RegisterActivity extends Activity {
 						Toast.makeText(getApplicationContext(), "×¢²áÊ§°Ü",
 							     Toast.LENGTH_SHORT).show();
 					}
-					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -3,7 +3,7 @@ package com.example.entity;
 public class Share {
 	private int ico;//头像
 	private String username;//用户名
-	private String title;//标提
+	private String title;//标题
 	private int img;//图片
 	public String getUsername() {
 		return username;

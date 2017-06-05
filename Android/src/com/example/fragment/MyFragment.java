@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import com.example.adapter.ShareAdapter;
 import com.example.common.AtyContainer;
+import com.example.common.LogUtil;
 import com.example.common.MyURL;
 import com.example.entity.Share;
 import com.example.mychat.R;
@@ -96,26 +97,25 @@ public class MyFragment extends Fragment {
 		logout_button.setOnClickListener(new OnClickListener() {
 			//退出登录
 			public void onClick(View v) {			
-				String username = sp.getString("USERNAME", "");
+				String userid = sp.getString("USERID", "");
 				AsyncHttpClient client = new AsyncHttpClient();
 				RequestParams params = new RequestParams();
-				params.put("userid", username);
+				params.put("userid", userid);
+				LogUtil.d("MainActivity", userid);
 				client.post(MyURL.LogoutURL, params, new JsonHttpResponseHandler(){
 					public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
 						Editor editor = sp.edit();
 						try {
 							int returnCode =  (Integer) response.get("returnCode");
-							//登录成功
+							// 登出成功
 							if(returnCode == 1){
-								//记住密码勾选
+								// 清空原有的记住密码勾选
 								editor.putString("USERNAME", "");
 								editor.putString("PASSWORD", "");			
 								editor.putBoolean("REMEMBER", false);
 								AtyContainer.getInstance().finishAllActivity();
 							}
-							
 						} catch (Exception e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						

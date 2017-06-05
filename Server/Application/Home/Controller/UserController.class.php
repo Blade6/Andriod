@@ -5,16 +5,9 @@ use Home\Event\JsonEvent;
 use Home\Model\FriendsModel;
 class UserController extends Controller {
     
-    // 判断给定userid是否登录
-    public function islegal($userid){
-       if($_SESSION[$userid]==1) return TRUE ;
-        else return FALSE;        
-    }
-    
     // 登录
     public function login($username, $pwd) {
         $userid = D('user')->getUserId($username);
-        $SESSION[$userid] = 1;
         $result = D('user')->userLogin($username, $pwd);
         $json = (new JsonEvent())->encapsulate($result, "userInfo");
         header('Content-type:text/json');
@@ -23,21 +16,15 @@ class UserController extends Controller {
     
     // 退出登录
     public function logout($userid){
-        if($this->islegal($userid)){
-            session($userid,null);
-            $json['returnCode'] = 1;
-            $json['msg'] = "success";
-        }else{
-            $json['returnCode'] = 0;
-            $json['msg'] = "fail";
-        }
+        $json['returnCode'] = 1;
+        $json['msg'] = "success";
         header('Content-type:text/json');
         echo json_encode($json,JSON_UNESCAPED_UNICODE);  
     }
     
     // 注册
-    public function register($username,$password,$quetionOne,$answerOne,$quetionTwo,$answerTwo) {
-        $result = D('user')->userSignup($username,$password,$quetionOne,$answerOne,$quetionTwo,$answerTwo);
+    public function register($username,$password,$questionOne,$answerOne,$questionTwo,$answerTwo) {
+        $result = D('user')->userSignup($username,$password,$questionOne,$answerOne,$questionTwo,$answerTwo);
         switch ($result) {
         case -1:
             $json['returnCode'] = 0;
@@ -68,8 +55,25 @@ class UserController extends Controller {
         echo json_encode($json,JSON_UNESCAPED_UNICODE);
     }
     
+    //搜索账号接口
+    public function search($userid,$searchname){
+        $result=D('user')->getUserId($searchname);
+        $json = (new JsonEvent())->encapsulate($result, "searchinfo");
+        header('Content-type:text/json');
+        echo json_encode($json,JSON_UNESCAPED_UNICODE);
+    }
+    
     public function getShare($userid) {
        
     }
+    
+     //获取个人信息中的相册
+    public function getUserShare($userid){
+        $share=D('moment')->getMoments($userid);
+        $json = (new JsonEvent())->encapsulate($share, "userShare");
+        header('Content-type:text/json');
+        echo json_encode($json,JSON_UNESCAPED_UNICODE);
+    }
+    
     
 }
