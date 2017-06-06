@@ -43,7 +43,7 @@ public class FrdFragment extends Fragment {
 	private LinearLayout layout1;
 	private LinearLayout layout2;
 	private SharedPreferences sp;
-	private TextView returnview;
+	private ImageView returnview;
 	private Button findnewfriend_button;
 	private ImageView refresh;
 	private ListView newfriendlist;
@@ -69,7 +69,7 @@ public class FrdFragment extends Fragment {
 		layout1 = (LinearLayout) view.findViewById(R.id.include1);  
 		layout2 = (LinearLayout) view.findViewById(R.id.include2);
 		LayoutInflater inflater =  LayoutInflater.from(this.getActivity());
-		returnview = (TextView) this.getActivity().findViewById(R.id.returnview);
+		returnview = (ImageView) this.getActivity().findViewById(R.id.returnview);
 		findnewfriend_button = (Button) view.findViewById(R.id.findnewfriend_button);
 		refresh = (ImageView) view.findViewById(R.id.refresh);
 		newfriendlist = (ListView) view.findViewById(R.id.newfriendlist);

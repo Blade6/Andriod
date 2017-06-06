@@ -6,6 +6,7 @@ public class MyURL {
 	public static final String FriendsURL = "http://192.168.201.80:8080/wechat/index.php/Home/User/getFriends/";
 	public static final String FindfriendURL = "http://192.168.201.80:8080/wechat/index.php/Home/User/search/";
 	public static final String addfriendURL = "http://192.168.201.80:8080/wechat/index.php/Home/User/addFriend/";
+	public static final String getShareURL = "http://192.168.201.80:8080/wechat/index.php/Home/User/getShare/";
 	public static final String LogoutURL = "http://192.168.201.80:8080/wechat/index.php/Home/User/logout/";
 	public static final String talkServerIP = "192.168.201.80";
 	public static final int talkServerPort = 8089;

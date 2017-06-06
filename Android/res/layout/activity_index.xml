@@ -6,14 +6,16 @@
     >
 
    <include layout="@layout/top"/>
+   
    	<FrameLayout
    	    android:id="@+id/id_content"
    	    android:layout_weight="1"
    	    android:layout_width="match_parent"
    	    android:layout_height="0dp"
-   	    android:background="@drawable/edit">
+   	    android:background="?android:attr/colorBackground">
    	  
    	</FrameLayout>
+   	
    <include layout="@layout/bottom"/>
 
 </LinearLayout>

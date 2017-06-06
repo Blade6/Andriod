@@ -27,17 +27,14 @@ public class ShareAdapter extends BaseAdapter {
 		   this.data = data;
 	}
 	public int getCount() {
-		// TODO Auto-generated method stub
 		return data.size();
 	}
 
 	public Object getItem(int arg0) {
-		// TODO Auto-generated method stub
 		return arg0;
 	}
 
 	public long getItemId(int arg0) {
-		// TODO Auto-generated method stub
 		return arg0;
 	}
 
@@ -50,7 +47,7 @@ public class ShareAdapter extends BaseAdapter {
                     R.layout.shareitem, null);
             holder.ico = (ImageView)convertView.findViewById(R.id.username_ico);
             holder.username = (TextView)convertView.findViewById(R.id.username);
-            holder.title = (TextView)convertView.findViewById(R.id.title);
+            holder.words = (TextView)convertView.findViewById(R.id.title);
             holder.shareimg = (ImageView)convertView.findViewById(R.id.shareimg);
             if(info.getImg() == 0){
             	holder.shareimg.setVisibility(View.GONE);
@@ -62,7 +59,7 @@ public class ShareAdapter extends BaseAdapter {
         }
         
         holder.username.setText(info.getUsername());
-        holder.title.setText(info.getTitle());
+        holder.words.setText(info.getWords());
         holder.ico.setImageResource(info.getIco());
         if(!(info.getImg() ==0)){
         	holder.shareimg.setImageResource(info.getImg());
@@ -73,7 +70,7 @@ public class ShareAdapter extends BaseAdapter {
 	 public class ViewHolder {
 		 	ImageView ico;
 	        TextView username;
-	        TextView title;
+	        TextView words;
 	        ImageView shareimg;
 	    }
 }

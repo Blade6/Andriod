@@ -46,17 +46,13 @@ public class MyFragment extends Fragment {
 	private LinearLayout layout3;
 	private LinearLayout layout4;
 	private SharedPreferences sp;
-	private TextView returnview;
+	private ImageView returnview;
 	private ImageView ico;
 	private TextView name;
 	private TextView id;
-	private TextView sex;
-	private TextView date;
 	private ListView mygallerylist;
 	private LinearLayout selectico;
 	private LinearLayout chengenanme;
-	private LinearLayout chengedate;
-	private LinearLayout chengesex;
 	private TextView textview;
 	private Button change;
 	private EditText edittext;
@@ -79,17 +75,13 @@ public class MyFragment extends Fragment {
 		layout2 = (LinearLayout) view.findViewById(R.id.my2);
 		layout3 = (LinearLayout) view.findViewById(R.id.my3);
 		layout4 = (LinearLayout) view.findViewById(R.id.my4);
-		returnview = (TextView) this.getActivity().findViewById(R.id.returnview);
+		returnview = (ImageView) this.getActivity().findViewById(R.id.returnview);
 		ico = (ImageView) view.findViewById(R.id.ico);
 		name = (TextView) view.findViewById(R.id.info_name);
 		id = (TextView) view.findViewById(R.id.info_id);
-		sex = (TextView) view.findViewById(R.id.info_sex);
-		date = (TextView) view.findViewById(R.id.info_date);
 		mygallerylist = (ListView) view.findViewById(R.id.mygallerylist);
 		selectico = (LinearLayout) view.findViewById(R.id.selectico);
 		chengenanme = (LinearLayout) view.findViewById(R.id.chengenanme);
-		chengedate= (LinearLayout) view.findViewById(R.id.chengedate);
-		chengesex= (LinearLayout) view.findViewById(R.id.chengesex);
 		textview = (TextView) view.findViewById(R.id.textview);
 		change = (Button) view.findViewById(R.id.change);
 		edittext = (EditText) view.findViewById(R.id.edittext);
@@ -145,40 +137,14 @@ public class MyFragment extends Fragment {
 				edittext.setText("");
 				layout4.setVisibility(View.VISIBLE);
 				}
-			});
-		
-		//修改生日		
-		chengedate.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {	
-				textview.setText("生日");
-				layout2.setVisibility(View.GONE);
-				edittext.setText("");
-				layout4.setVisibility(View.VISIBLE);
-				}
-			});		
-		
-		//修改性别
-		chengesex.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {	
-				textview.setText("性别");
-				layout2.setVisibility(View.GONE);
-				edittext.setText("");
-				layout4.setVisibility(View.VISIBLE);
-				}
-			});		
+			});	
 		
 		//确认修改
 		change.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {	
 				String object = (String) textview.getText();
-				if(object == "性别"){
-					sex.setText(edittext.getText());
-				}
 				if(object == "用户名"){
 					name.setText(edittext.getText());				
-				}
-				if(object == "生日"){
-					date.setText(edittext.getText());
 				}
 				layout4.setVisibility(View.GONE);
 				layout2.setVisibility(View.VISIBLE);
@@ -293,11 +259,11 @@ public class MyFragment extends Fragment {
 				   //测试
 				   ArrayList<Share> list = new ArrayList<Share>();
 			        Share share = new Share();
-			        share.setTitle("123");
+			        share.setWords("123");
 			        share.setUsername("34455");
 			        list.add(share);
 			        Share share2 = new Share();
-			        share2.setTitle("123");
+			        share2.setWords("123");
 			        share2.setUsername("34455");
 			        share2.setImg(2130837518);
 			        list.add(share2);

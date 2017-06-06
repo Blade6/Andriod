@@ -3,7 +3,7 @@ package com.example.entity;
 public class Share {
 	private int ico;//头像
 	private String username;//用户名
-	private String title;//标题
+	private String words;//文字
 	private int img;//图片
 	public String getUsername() {
 		return username;
@@ -11,11 +11,11 @@ public class Share {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getTitle() {
-		return title;
+	public String getWords() {
+		return words;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setWords(String words) {
+		this.words = words;
 	}
 	public int getIco() {
 		return ico;

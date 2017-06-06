@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-       <include  
+    <include  
         android:id="@+id/my1"  
         android:layout_width="match_parent"  
         android:layout_height="0dp"  
@@ -17,18 +17,21 @@
         android:layout_weight="1"  
         android:visibility="gone"  
         layout="@layout/my2" />  
-       <include  
+        
+    <include  
         android:id="@+id/my3"  
         android:layout_width="match_parent"  
         android:layout_height="0dp"  
         android:layout_weight="1"  
         android:visibility="gone"  
         layout="@layout/my3" /> 
+        
     <include  
         android:id="@+id/my4"  
         android:layout_width="match_parent"  
         android:layout_height="0dp"  
         android:layout_weight="1"  
         android:visibility="gone"  
-        layout="@layout/my4" />       
+        layout="@layout/my4" /> 
+              
 </LinearLayout>

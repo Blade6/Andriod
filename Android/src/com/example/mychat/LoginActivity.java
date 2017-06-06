@@ -98,7 +98,8 @@ public class LoginActivity extends Activity {
 					}
 					
 				} catch (Exception e) {
-					e.printStackTrace();
+					Toast.makeText(getApplicationContext(), "发送网络请求失败，请先确认已连接网络",
+						     Toast.LENGTH_SHORT).show();
 				}
 				
 			};
