@@ -82,7 +82,7 @@ public class ShareFragment extends Fragment {
 					    for(int i=0;i<jsonArray.length();i++){
 					    	JSONObject ob = (JSONObject) jsonArray.get(i);
 					    	Share s = new Share();
-					    	//s.setImg(ob.getInt("image"));
+					    	s.setImgPath(ob.getString("image"));
 					    	s.setWords(ob.getString("words"));
 					    	s.setUsername(ob.getString("username"));
 					        result.add(s);

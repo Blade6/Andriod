@@ -1,13 +1,16 @@
 package com.example.common;
 
 public class MyURL {
-	public static final String LoginURL = "http://192.168.201.80:8080/wechat/index.php/Home/User/login/";
-	public static final String RegisterURL = "http://192.168.201.80:8080/wechat/index.php/Home/User/register/";
-	public static final String FriendsURL = "http://192.168.201.80:8080/wechat/index.php/Home/User/getFriends/";
-	public static final String FindfriendURL = "http://192.168.201.80:8080/wechat/index.php/Home/User/search/";
-	public static final String addfriendURL = "http://192.168.201.80:8080/wechat/index.php/Home/User/addFriend/";
-	public static final String getShareURL = "http://192.168.201.80:8080/wechat/index.php/Home/User/getShare/";
-	public static final String LogoutURL = "http://192.168.201.80:8080/wechat/index.php/Home/User/logout/";
-	public static final String talkServerIP = "192.168.201.80";
+	public static String IP = "192.168.201.80";
+	public static String URLHead = "http://" + IP + ":8080/wechat/index.php/Home/User/";
+	
+	public static final String LoginURL = URLHead + "login/";
+	public static final String RegisterURL = URLHead + "register/";
+	public static final String FriendsURL = URLHead + "getFriends/";
+	public static final String FindfriendURL = URLHead + "search/";
+	public static final String addfriendURL = URLHead + "addFriend/";
+	public static final String getShareURL = URLHead + "getShare/";
+	public static final String LogoutURL = URLHead + "logout/";
+	public static final String talkServerIP = IP;
 	public static final int talkServerPort = 8089;
 }

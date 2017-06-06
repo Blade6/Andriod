@@ -5,6 +5,7 @@ public class Share {
 	private String username;//用户名
 	private String words;//文字
 	private int img;//图片
+	private String img_path;
 	public String getUsername() {
 		return username;
 	}
@@ -29,6 +30,11 @@ public class Share {
 	public void setImg(int img) {
 		this.img = img;
 	}
-	
+	public void setImgPath(String img_path) {
+		this.img_path = img_path;
+	}
+	public String getImgPath() {
+		return img_path;
+	}
 	
 }

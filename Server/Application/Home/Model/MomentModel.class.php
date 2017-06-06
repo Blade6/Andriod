@@ -21,17 +21,36 @@ class MomentModel extends Model {
     }
     
     public function getMoments($userid) {
-        $data['userid'] = $userid;
-        $result = $this->moment->where($data)->select();
-        return $result;
+        $friends1 = D('friends')->getUserFriends1($userid,'frename');
+        $friends2 = D('friends')->getUserFriends2($userid,'username');
+        
+        $username = D('user')->getUserName($userid);
+        $sql = "select * from `moment` where username= '$username'";
+        
+        foreach ($friends1 as $key => $value) {
+            foreach ($value as $key1 => $value1) {
+                $sql .= " or username="."'".$value['frename']."'";
+            }
+        }
+        
+        foreach ($friends2 as $key => $value) {
+            foreach ($value as $key1 => $value1) {
+                $sql .= " or username="."'".$value['username']."'";
+            }
+        }
+        
+        $sql .= " order by time desc";
+        
+        $moments = M('moment')->query($sql);
+        
+        return $moments;
     }
-    
-    
-    public function shareMoment($userid,$words,$image){
-        $data['userid']=$userid;
+
+    public function shareMoment($username,$words,$image){
+        $data['username']=$username;
         $data['words']=$words;
         $data['image']=$image;
-        $result=  $this->moment->data($data)->add();
+        $result = $this->moment->data($data)->add();
         return $result;
     }
 }

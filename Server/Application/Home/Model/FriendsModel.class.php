@@ -11,16 +11,26 @@ use Think\Model;
 
 class FriendsModel extends Model{
 
-    public function getUserFriends1($userid){
+    public function getUserFriends1($userid, $para){
        $friends=M('friends');
-       $result=$friends->query("select frename from `friends` where userid='$userid' ");
+       $data["userid"] = $userid;
+       $result = $friends->field($para)->where($data)->select();
        return $result;
     }
     
-    public function getUserFriends2($freid){
+    public function getUserFriends2($userid, $para){
        $friends=M('friends');  
-       $result=$friends->query("select username from `friends` where freid='$freid' ");
+       $data["freid"] = $userid;
+       $result = $friends->field($para)->where($data)->select();
        return $result;
+    }
+    
+    public function getFriends($userid,$para1,$para2) {
+        $re1=$this->getUserFriends1($userid,$para1);// 获取到userid的多条freid
+        $re2=$this->getUserFriends2($userid,$para2);
+        
+        $result = array_merge($re1,$re2);
+        return $result;
     }
 
     public function findFriends1($userid,$friendId){
@@ -36,7 +46,10 @@ class FriendsModel extends Model{
     }
 
     public function addFriends($userid,$username,$friendId,$frename){
-       $friends=M('friends'); 
+       $friends=M('friends');
+       $re = $friends->field('id')->order('id desc')->limit(1)->find();
+       $data['id'] = (int)$re['id'] + 1;
+       
        $data['userid']=$userid;
        $data['username']=$username;
        $data['freid']=$friendId; 

@@ -2931,3 +2931,728 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000749s ]
 INFO: [ app_end ] --END-- [ RunTime:0.000809s ]
 
+[ 2017-06-05T20:54:29+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/login/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000518s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000920s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000998s ]
+ERR: 参数错误或者未定义:username
+
+[ 2017-06-05T20:54:48+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/getFriends/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000421s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000561s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000601s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0036s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0031s ]
+SQL: select frename from `friends` where userid='000001'  [ RunTime:0.0003s ]
+SQL: select username from `friends` where freid='000001'  [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000728s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000779s ]
+
+[ 2017-06-05T21:00:31+08:00 ] ::1 /wechat/index.php/Home/User/getFriends/userid/000002
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000605s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001094s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001178s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0084s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0412s ]
+SQL: select frename from `friends` where userid='000002'  [ RunTime:0.0003s ]
+SQL: select username from `friends` where freid='000002'  [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000689s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000727s ]
+
+[ 2017-06-05T21:04:55+08:00 ] ::1 /wechat/index.php/Home/User/getFriends/userid/000002
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000418s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000679s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000732s ]
+
+[ 2017-06-05T21:05:11+08:00 ] ::1 /wechat/index.php/Home/User/getFriends/userid/000002
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000506s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000743s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000784s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0053s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0034s ]
+SQL: select 'frename' from `friends` where userid='000002'  [ RunTime:0.0003s ]
+SQL: select 'username' from `friends` where freid='000002'  [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000866s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000925s ]
+
+[ 2017-06-05T21:21:06+08:00 ] ::1 /wechat/index.php/Home/User/getFriends/userid/000002
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000609s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000794s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000845s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0039s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0037s ]
+SQL: select 'frename' from `friends` where userid='000002'  [ RunTime:0.0009s ]
+SQL: select 'username' from `friends` where freid='000002'  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000617s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000658s ]
+
+[ 2017-06-05T21:21:09+08:00 ] ::1 /wechat/index.php/Home/User/getFriends/userid/000001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000715s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000743s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000804s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0055s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0338s ]
+SQL: select 'frename' from `friends` where userid='000001'  [ RunTime:0.0003s ]
+SQL: select 'username' from `friends` where freid='000001'  [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000702s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000740s ]
+
+[ 2017-06-05T21:21:42+08:00 ] ::1 /wechat/index.php/Home/User/getFriends/userid/000001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000528s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001178s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001266s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0043s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0031s ]
+ERR: Think\Model:getUserFriends1方法不存在！
+
+[ 2017-06-05T21:22:08+08:00 ] ::1 /wechat/index.php/Home/User/getFriends/userid/000001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000556s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000752s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000804s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0053s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0034s ]
+SQL: select 'frename' from `friends` where userid='000001'  [ RunTime:0.0004s ]
+SQL: select 'username' from `friends` where freid='000001'  [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001467s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001544s ]
+
+[ 2017-06-05T21:22:12+08:00 ] ::1 /wechat/index.php/Home/User/getFriends/userid/000002
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000493s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000644s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000687s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0160s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0419s ]
+SQL: select 'frename' from `friends` where userid='000002'  [ RunTime:0.0003s ]
+SQL: select 'username' from `friends` where freid='000002'  [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001540s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001756s ]
+
+[ 2017-06-05T21:22:36+08:00 ] ::1 /wechat/index.php/Home/User/getFriends/userid/000002
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000519s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001146s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001223s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0033s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0041s ]
+SQL: select 'frename' from `friends` where userid='000002'  [ RunTime:0.0007s ]
+SQL: select 'username' from `friends` where freid='000002'  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000788s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000860s ]
+
+[ 2017-06-05T21:23:09+08:00 ] ::1 /wechat/index.php/Home/User/getFriends/userid/000002
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000598s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000828s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000877s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0050s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '0' at line 1
+ [ SQL语句 ] : 0
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '0' at line 1
+ [ SQL语句 ] : 0
+
+[ 2017-06-05T21:24:27+08:00 ] ::1 /wechat/index.php/Home/User/getFriends/userid/000002
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000436s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000908s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000969s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0044s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0055s ]
+SQL: SELECT `frename` FROM `friends` WHERE `userid` = '000002'  [ RunTime:0.0003s ]
+SQL: select 'username' from `friends` where freid='000002'  [ RunTime:0.0001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000661s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000704s ]
+
+[ 2017-06-05T21:25:27+08:00 ] ::1 /wechat/index.php/Home/User/getFriends/userid/000002
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000510s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000671s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000708s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0041s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0035s ]
+SQL: SELECT `frename` FROM `friends` WHERE `userid` = '000002'  [ RunTime:0.0004s ]
+SQL: SELECT `username` FROM `friends` WHERE `freid` = '000002'  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000697s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000759s ]
+
+[ 2017-06-05T21:31:14+08:00 ] ::1 /wechat/index.php/Home/User/getShare
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000456s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000675s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000718s ]
+ERR: 参数错误或者未定义:userid
+
+[ 2017-06-05T21:31:21+08:00 ] ::1 /wechat/index.php/Home/User/getShare/userid/000001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000573s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000774s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000825s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0209s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0344s ]
+SQL: SELECT `userid` FROM `friends` WHERE `userid` = '000001'  [ RunTime:0.0004s ]
+SQL: SELECT `freid` FROM `friends` WHERE `freid` = '000001'  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001039s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001084s ]
+
+[ 2017-06-05T21:32:37+08:00 ] ::1 /wechat/index.php/Home/User/getFriends/userid/000002
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000817s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000671s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000711s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0053s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0034s ]
+SQL: SELECT `frename` FROM `friends` WHERE `userid` = '000002'  [ RunTime:0.0003s ]
+SQL: SELECT `username` FROM `friends` WHERE `freid` = '000002'  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000787s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000840s ]
+
+[ 2017-06-05T21:34:42+08:00 ] ::1 /wechat/index.php/Home/User/getShare/userid/000001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000646s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000670s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000715s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0037s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0035s ]
+SQL: SELECT `freid` FROM `friends` WHERE `userid` = '000001'  [ RunTime:0.0007s ]
+SQL: SELECT `userid` FROM `friends` WHERE `freid` = '000001'  [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001299s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001388s ]
+
+[ 2017-06-05T21:35:02+08:00 ] ::1 /wechat/index.php/Home/User/getFriends/userid/000002
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000615s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000790s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000844s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0036s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0046s ]
+SQL: SELECT `frename` FROM `friends` WHERE `userid` = '000002'  [ RunTime:0.0004s ]
+SQL: SELECT `username` FROM `friends` WHERE `freid` = '000002'  [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000672s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000717s ]
+
+[ 2017-06-05T21:35:30+08:00 ] ::1 /wechat/index.php/Home/User/getFriends/userid/000002
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000595s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000917s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001062s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0042s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0049s ]
+SQL: SELECT `frename` FROM `friends` WHERE `userid` = '000002'  [ RunTime:0.0005s ]
+SQL: SELECT `username` FROM `friends` WHERE `freid` = '000002'  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000760s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000809s ]
+
+[ 2017-06-05T21:35:33+08:00 ] ::1 /wechat/index.php/Home/User/register/username/ttt/password/202cb962ac59075b964b07152d234b70/questionOne/hhh/answerOne/hhh/questionTwo/hhh/answerTwo/hhh
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000718s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001090s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001161s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0039s ]
+SQL: SELECT `id` FROM `user` ORDER BY id desc LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'ttt' LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000858s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000901s ]
+
+[ 2017-06-05T21:35:40+08:00 ] ::1 /wechat/index.php/Home/User/getShare/userid/000001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000554s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000814s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000861s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0037s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0059s ]
+SQL: SELECT `freid` FROM `friends` WHERE `userid` = '000001'  [ RunTime:0.0003s ]
+SQL: SELECT `userid` FROM `friends` WHERE `freid` = '000001'  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000854s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000899s ]
+
+[ 2017-06-05T21:42:39+08:00 ] ::1 /wechat/index.php/Home/User/getShare/userid/000001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000711s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000803s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000864s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0057s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0039s ]
+SQL: SELECT `freid` FROM `friends` WHERE `userid` = '000001'  [ RunTime:0.0003s ]
+SQL: SELECT `userid` FROM `friends` WHERE `freid` = '000001'  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `moment` [ RunTime:0.0040s ]
+NOTIC: [8] Undefined variable: usreid D:\xampp\htdocs\wechat\Application\Home\Controller\UserController.class.php 第 86 行.
+SQL: SELECT * FROM `moment` WHERE `userid` = null  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001044s ]
+
+[ 2017-06-05T21:43:23+08:00 ] ::1 /wechat/index.php/Home/User/getShare/userid/000001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000565s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001437s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001525s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0041s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0034s ]
+SQL: SELECT `freid` FROM `friends` WHERE `userid` = '000001'  [ RunTime:0.0003s ]
+SQL: SELECT `userid` FROM `friends` WHERE `freid` = '000001'  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `moment` [ RunTime:0.0047s ]
+NOTIC: [8] Undefined variable: usreid D:\xampp\htdocs\wechat\Application\Home\Controller\UserController.class.php 第 86 行.
+SQL: SELECT * FROM `moment` WHERE `userid` = null  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000988s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001035s ]
+
+[ 2017-06-05T21:45:29+08:00 ] ::1 /wechat/index.php/Home/User/getShare/userid/000001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000498s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000843s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000927s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0053s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0036s ]
+SQL: SELECT `freid` FROM `friends` WHERE `userid` = '000001'  [ RunTime:0.0004s ]
+SQL: SELECT `userid` FROM `friends` WHERE `freid` = '000001'  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `moment` [ RunTime:0.0032s ]
+NOTIC: [8] Undefined variable: usreid D:\xampp\htdocs\wechat\Application\Home\Controller\UserController.class.php 第 86 行.
+SQL: SELECT * FROM `moment` WHERE `userid` = null  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000856s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000899s ]
+
+[ 2017-06-05T21:45:29+08:00 ] ::1 /wechat/index.php/Home/User/getShare/userid/000001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000576s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000892s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000950s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0033s ]
+SQL: SELECT `freid` FROM `friends` WHERE `userid` = '000001'  [ RunTime:0.0004s ]
+SQL: SELECT `userid` FROM `friends` WHERE `freid` = '000001'  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `moment` [ RunTime:0.0040s ]
+NOTIC: [8] Undefined variable: usreid D:\xampp\htdocs\wechat\Application\Home\Controller\UserController.class.php 第 86 行.
+SQL: SELECT * FROM `moment` WHERE `userid` = null  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001787s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001869s ]
+
+[ 2017-06-05T21:45:56+08:00 ] ::1 /wechat/index.php/Home/User/getShare/userid/000001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000517s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000765s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000805s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0039s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0037s ]
+SQL: SELECT `freid` FROM `friends` WHERE `userid` = '000001'  [ RunTime:0.0003s ]
+SQL: SELECT `userid` FROM `friends` WHERE `freid` = '000001'  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `moment` [ RunTime:0.0057s ]
+SQL: SELECT * FROM `moment` WHERE `userid` = '000001'  [ RunTime:0.0004s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000890s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000936s ]
+
+[ 2017-06-05T22:07:40+08:00 ] ::1 /wechat/index.php/Home/User/getFriends/userid/000002
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000593s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000786s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000841s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0053s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0052s ]
+SQL: SELECT `frename` FROM `friends` WHERE `userid` = '000002'  [ RunTime:0.0006s ]
+SQL: SELECT `username` FROM `friends` WHERE `freid` = '000002'  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000790s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000850s ]
+
+[ 2017-06-05T22:08:05+08:00 ] ::1 /wechat/index.php/Home/User/getShare/userid/000001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000536s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000740s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000803s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0046s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0034s ]
+SQL: SELECT `freid` FROM `friends` WHERE `userid` = '000001'  [ RunTime:0.0003s ]
+SQL: SELECT `userid` FROM `friends` WHERE `freid` = '000001'  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000878s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000922s ]
+
+[ 2017-06-05T23:26:51+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/login/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000506s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000743s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000782s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0045s ]
+SQL: SELECT `id` FROM `user` ORDER BY id desc LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'hjh' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'hjh' AND `password` = '202cb962ac59075b964b07152d234b70' LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000938s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001002s ]
+
+[ 2017-06-05T23:27:03+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/getFriends/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000377s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000578s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000616s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0032s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0036s ]
+SQL: SELECT `frename` FROM `friends` WHERE `userid` = '000001'  [ RunTime:0.0004s ]
+SQL: SELECT `username` FROM `friends` WHERE `freid` = '000001'  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000647s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000692s ]
+
+[ 2017-06-05T23:27:09+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/login/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000389s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000900s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000958s ]
+ERR: 参数错误或者未定义:username
+
+[ 2017-06-05T23:28:53+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/login/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000441s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000584s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000621s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0029s ]
+SQL: SELECT `id` FROM `user` ORDER BY id desc LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'hjh' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'hjh' AND `password` = '202cb962ac59075b964b07152d234b70' LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000862s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000921s ]
+
+[ 2017-06-05T23:28:55+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/getFriends/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000405s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000622s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000665s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0032s ]
+SQL: SELECT `frename` FROM `friends` WHERE `userid` = '000001'  [ RunTime:0.0003s ]
+SQL: SELECT `username` FROM `friends` WHERE `freid` = '000001'  [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000668s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000719s ]
+
+[ 2017-06-05T23:29:01+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/login/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000622s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000983s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001056s ]
+ERR: 参数错误或者未定义:username
+
+[ 2017-06-05T23:40:02+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/login/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000418s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000648s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000686s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0036s ]
+SQL: SELECT `id` FROM `user` ORDER BY id desc LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'hjh' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'hjh' AND `password` = '202cb962ac59075b964b07152d234b70' LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000692s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000741s ]
+
+[ 2017-06-05T23:40:05+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/getFriends/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000429s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000668s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0035s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0031s ]
+SQL: SELECT `frename` FROM `friends` WHERE `userid` = '000001'  [ RunTime:0.0003s ]
+SQL: SELECT `username` FROM `friends` WHERE `freid` = '000001'  [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001082s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001153s ]
+
+[ 2017-06-05T23:40:06+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/login/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000385s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000597s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000636s ]
+ERR: 参数错误或者未定义:username
+
+[ 2017-06-05T23:41:03+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/login/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000432s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000876s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000951s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0057s ]
+SQL: SELECT `id` FROM `user` ORDER BY id desc LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'hjh' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'hjh' AND `password` = '202cb962ac59075b964b07152d234b70' LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000690s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000747s ]
+
+[ 2017-06-05T23:42:59+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/getFriends/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000394s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000597s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000634s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0032s ]
+SQL: SELECT `frename` FROM `friends` WHERE `userid` = '000001'  [ RunTime:0.0004s ]
+SQL: SELECT `username` FROM `friends` WHERE `freid` = '000001'  [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000696s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000751s ]
+
+[ 2017-06-05T23:43:04+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/login/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000501s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000651s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000702s ]
+ERR: 参数错误或者未定义:username
+
+[ 2017-06-05T23:44:20+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/getFriends/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000371s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000941s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001009s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0044s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0038s ]
+SQL: SELECT `frename` FROM `friends` WHERE `userid` = '000001'  [ RunTime:0.0004s ]
+SQL: SELECT `username` FROM `friends` WHERE `freid` = '000001'  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000698s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000741s ]
+
+[ 2017-06-05T23:45:08+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/logout/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000370s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000642s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000688s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000628s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000669s ]
+
+[ 2017-06-05T23:45:49+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/login/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000413s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000647s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000707s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0038s ]
+SQL: SELECT `id` FROM `user` ORDER BY id desc LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'hjh' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'hjh' AND `password` = '202cb962ac59075b964b07152d234b70' LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000821s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000875s ]
+
+[ 2017-06-05T23:49:35+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/login/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000383s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000637s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0036s ]
+SQL: SELECT `id` FROM `user` ORDER BY id desc LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'hjh' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'hjh' AND `password` = '202cb962ac59075b964b07152d234b70' LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000652s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000702s ]
+
+[ 2017-06-05T23:49:38+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/getFriends/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000362s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000579s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000615s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0057s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0031s ]
+SQL: SELECT `frename` FROM `friends` WHERE `userid` = '000001'  [ RunTime:0.0003s ]
+SQL: SELECT `username` FROM `friends` WHERE `freid` = '000001'  [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000725s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000770s ]
+
+[ 2017-06-05T23:49:39+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/login/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000387s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000617s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000657s ]
+ERR: 参数错误或者未定义:username
+
+[ 2017-06-05T23:50:05+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/logout/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000422s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001023s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001133s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000931s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000989s ]
+
+[ 2017-06-05T23:51:33+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/login/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000420s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000584s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000630s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0034s ]
+SQL: SELECT `id` FROM `user` ORDER BY id desc LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'hjh' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `user` WHERE `username` = 'hjh' AND `password` = '202cb962ac59075b964b07152d234b70' LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000640s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000692s ]
+
+[ 2017-06-05T23:51:35+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/getFriends/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000395s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000581s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000618s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0035s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0038s ]
+SQL: SELECT `frename` FROM `friends` WHERE `userid` = '000001'  [ RunTime:0.0004s ]
+SQL: SELECT `username` FROM `friends` WHERE `freid` = '000001'  [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000742s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000805s ]
+
+[ 2017-06-05T23:51:36+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/login/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000412s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000598s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000638s ]
+ERR: 参数错误或者未定义:username
+
+[ 2017-06-05T23:53:53+08:00 ] 192.168.201.80 /wechat/index.php/Home/User/getFriends/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000534s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000905s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000971s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0041s ]
+SQL: SHOW COLUMNS FROM `friends` [ RunTime:0.0044s ]
+SQL: SELECT `frename` FROM `friends` WHERE `userid` = '000001'  [ RunTime:0.0004s ]
+SQL: SELECT `username` FROM `friends` WHERE `freid` = '000001'  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000717s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000769s ]
+

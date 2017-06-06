@@ -47,10 +47,7 @@ class UserController extends Controller {
     
     // 获取好友列表
     public function getFriends($userid){
-        $re1=D('friends')->getUserFriends1($userid);// 获取到userid的多条freid
-        $re2=D('friends')->getUserFriends2($userid);
-        
-        $result=  array_merge($re1,$re2);
+        $result = D('friends')->getFriends($userid,"frename","username");
         $json = (new JsonEvent())->encapsulate($result, "friends");
         header('Content-type:text/json');
         echo json_encode($json,JSON_UNESCAPED_UNICODE);
@@ -84,24 +81,22 @@ class UserController extends Controller {
     
     // 获取动态
     public function getShare($userid) {
-       
+        $moments = D('moment')->getMoments($userid);
+        $json = (new JsonEvent())->encapsulate($moments, "shareInfo");
+        header('Content-type:text/json');
+        echo json_encode($json,JSON_UNESCAPED_UNICODE);
     }
     
     //发朋友圈
-    public function share($userid,$words,$image){
-        if($this->islegal($userid)){
-            $result=D('moment')->shareMoment($userid,$words,$image);
-            if($result){
-                $json['returnCode'] = 1;
-                $json['msg'] = "success";
-            }  else {
-                $json['returnCode'] = 0;
-                $json['msg'] = "fail";
-            }
-        }else {
-                $json['returnCode'] = 0;
-                $json['msg'] = "fail";
-            }
+    public function share($userid,$username,$words,$image){
+        $result=D('moment')->shareMoment($username,$words,$image);
+        if($result){
+            $json['returnCode'] = 1;
+            $json['msg'] = "success";
+        }  else {
+            $json['returnCode'] = 0;
+            $json['msg'] = "fail";
+        }
         header('Content-type:text/json');
         echo json_encode($json,JSON_UNESCAPED_UNICODE);
     }
@@ -120,9 +115,9 @@ class UserController extends Controller {
        if($pwd==$oldpwd){
             $result=(new UserModel())->changePwd($userid, $newpwd);
        }
-        $json=(new JsonEvent())->encapsulate($result, 'userinfo');
-        header('Content-type:text/json');
-        echo json_encode($json,JSON_UNESCAPED_UNICODE); 
+       $json=(new JsonEvent())->encapsulate($result, 'userinfo');
+       header('Content-type:text/json');
+       echo json_encode($json,JSON_UNESCAPED_UNICODE); 
     }
     
 }

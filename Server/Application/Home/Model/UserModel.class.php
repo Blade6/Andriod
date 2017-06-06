@@ -43,6 +43,7 @@ class UserModel extends Model {
         $data['A1']=$answerOne;
         $data['Q2']=$questionTwo;
         $data['A2']=$answerTwo;
+        $data['pic'] = '/wechat/Public/Users/default.png';
         $result=$user->data($data)->add();
         if($result) return $userid;
         else return 0;
@@ -56,6 +57,7 @@ class UserModel extends Model {
         return $result;
     }
     
+    // 根据username返回相应的userid
     public function getUserId($username) {
         $user = M('user');
         $condition['username'] = $username;
@@ -63,6 +65,7 @@ class UserModel extends Model {
         return $result["userid"];
     }
     
+    // 根据userid返回相应的username
     public function getUserName($userid) {
         $data["userid"] = $userid;
         $re=M('user')->where($data)->find();
