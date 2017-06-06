@@ -1,5 +1,6 @@
 package com.example.fragment;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -11,11 +12,9 @@ import org.json.JSONObject;
 import com.example.adapter.ShareAdapter;
 import com.example.common.LogUtil;
 import com.example.common.MyURL;
-import com.example.entity.Friend;
 import com.example.entity.Share;
 import com.example.mychat.R;
-import com.example.mychat.R.id;
-import com.example.mychat.R.layout;
+import com.example.service.ShareService;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -23,7 +22,11 @@ import com.loopj.android.http.RequestParams;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,11 +36,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class ShareFragment extends Fragment {
+	
+	protected static final int SUCCESS_GET_SHARE = 0;
 	
 	private ListView sharelist;
 	private ImageView addshare;
@@ -48,6 +51,18 @@ public class ShareFragment extends Fragment {
 	private ImageView shareimg;
 	private SharedPreferences sp;
 	private Context context;
+	private File cache;
+	private ShareAdapter adapter;
+	
+	private Handler mHandler = new Handler(){  
+        public void handleMessage(android.os.Message msg) {  
+            if(msg.what == SUCCESS_GET_SHARE){  
+                List<Share> shares = (List<Share>) msg.obj;  
+                adapter = new ShareAdapter(context,shares,cache);  
+                sharelist.setAdapter(adapter);  
+            }  
+        };  
+    };
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,6 +70,7 @@ public class ShareFragment extends Fragment {
 		//引入我们的布局
 		return inflater.inflate(R.layout.share, container, false);
 	}
+	
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		sharelist = (ListView) view.findViewById(R.id.sharelist);
@@ -68,12 +84,18 @@ public class ShareFragment extends Fragment {
 		sp = this.getActivity().getSharedPreferences("userinfo", Context.MODE_WORLD_READABLE);
 		List<Map<String, Object>>  result = new ArrayList<Map<String, Object>>();
 		
+		//创建缓存目录，系统一运行就得创建缓存目录的，  
+        cache = new File(Environment.getExternalStorageDirectory(), "cache");   
+        if(!cache.exists()){  
+            cache.mkdirs();  
+        }
+		
 	    AsyncHttpClient client = new AsyncHttpClient();
 	    RequestParams params = new RequestParams();
 	    String userid = sp.getString("USERID", "");
 	    params.put("userid", userid);
 	    client.post(MyURL.getShareURL, params, new JsonHttpResponseHandler(){
-		   ArrayList<Share>  result = new ArrayList<Share>();
+		   List<Share>  result = new ArrayList<Share>();
 		   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
 			   try { 
 				    int returnCode =  (Integer) response.get("returnCode");
@@ -82,50 +104,55 @@ public class ShareFragment extends Fragment {
 					    for(int i=0;i<jsonArray.length();i++){
 					    	JSONObject ob = (JSONObject) jsonArray.get(i);
 					    	Share s = new Share();
-					    	s.setImgPath(ob.getString("image"));
-					    	s.setWords(ob.getString("words"));
+					    	if (!ob.getString("image").equals("null")) {
+					    		s.setImgPath(ob.getString("image"));
+					    	}
+					    	if (!ob.getString("words").equals("null")) {
+					    		s.setWords(ob.getString("words"));
+					    	}
 					    	s.setUsername(ob.getString("username"));
 					        result.add(s);
 					    }
-					    ShareAdapter adapter = new ShareAdapter(context,result);
-					    sharelist.setAdapter(adapter);
+//					    ShareAdapter adapter = new ShareAdapter(context,result);
+//					    sharelist.setAdapter(adapter);
+					    
+					  //获取数据，主UI线程是不能做耗时操作的，所以启动子线程来做  
+				      new Thread(){  
+				            public void run() {  
+				                ShareService service = new ShareService();    
+				                //子线程通过Message对象封装信息，并且用初始化好的，  
+				                //Handler对象的sendMessage()方法把数据发送到主线程中，从而达到更新UI主线程的目的  
+				                Message msg = new Message();  
+				                msg.what = SUCCESS_GET_SHARE;  
+				                msg.obj = result;  
+				                mHandler.sendMessage(msg);  
+				            };  
+				        }.start();
 				    } else {
 				    	Toast.makeText(context, "动态获取失败",
 							     Toast.LENGTH_SHORT).show();
 				    }
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
+			   } catch (JSONException e) {
+				   e.printStackTrace();
+			   }
 			};
-		});
-		
-		
-		//测试
-		
-		
-		//ArrayList<Share> data= getData();
-		//ShareAdapter adapter = new ShareAdapter(getActivity(), data);
-		//sharelist.setAdapter(adapter);
-		
+		});	
 		
 		addshare.setOnClickListener(new OnClickListener() {
-			
 			public void onClick(View v) {			
 				share1.setVisibility(View.GONE);  
 				share2.setVisibility(View.VISIBLE);  
 				returnview.setVisibility(View.VISIBLE);
-				
 			}
 		});
 		
 		returnview.setOnClickListener(new OnClickListener() {		
-		public void onClick(View v) {			
-			share1.setVisibility(View.VISIBLE);  
-			share2.setVisibility(View.GONE);  
-			returnview.setVisibility(View.GONE);
-			
-		}
-	});
+			public void onClick(View v) {			
+				share1.setVisibility(View.VISIBLE);  
+				share2.setVisibility(View.GONE);  
+				returnview.setVisibility(View.GONE);
+			}
+		});
 		
 		
 		shareimg.setOnClickListener(new OnClickListener() {		
@@ -140,19 +167,5 @@ public class ShareFragment extends Fragment {
 			}
 		});
 	}
-	
-	private ArrayList<Share> getData() {
-	    //测试
-	    ArrayList<Share> list = new ArrayList<Share>();
-        Share share = new Share();
-        share.setWords("123");
-        share.setUsername("34455");
-        list.add(share);
-        Share share2 = new Share();
-        share2.setWords("123");
-        share2.setUsername("34455");
-        share2.setImg(R.drawable.logo);
-        list.add(share2);
-        return list;
-    }
+    
 }

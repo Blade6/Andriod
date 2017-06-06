@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-06-06 13:51:06
+-- Generation Time: 2017-06-06 17:55:58
 -- 服务器版本： 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -78,7 +78,7 @@ CREATE TABLE `moment` (
 --
 
 INSERT INTO `moment` (`id`, `username`, `words`, `image`, `time`) VALUES
-(1, 'hjh', 'Hello World.', '/wechat/Public/Users/default.png', '2017-06-05 05:41:41'),
+(1, 'hjh', 'Hello World.', '/wechat/Public/Moments/helloworld.jpg', '2017-06-05 05:41:41'),
 (2, 'hjh', '111', NULL, '2017-06-05 05:41:56'),
 (3, 'hjh', 'tttt', NULL, '2017-06-05 05:42:09'),
 (4, 'zzz', '~~~~', NULL, '2017-06-05 05:46:21'),

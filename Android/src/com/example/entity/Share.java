@@ -1,11 +1,10 @@
 package com.example.entity;
 
 public class Share {
-	private int ico;//头像
+	private String ico_path;// 头像
 	private String username;//用户名
 	private String words;//文字
-	private int img;//图片
-	private String img_path;
+	private String img_path;//图片
 	public String getUsername() {
 		return username;
 	}
@@ -18,17 +17,11 @@ public class Share {
 	public void setWords(String words) {
 		this.words = words;
 	}
-	public int getIco() {
-		return ico;
+	public String getIcoPath() {
+		return ico_path;
 	}
-	public void setIco(int ico) {
-		this.ico = ico;
-	}
-	public int getImg() {
-		return img;
-	}
-	public void setImg(int img) {
-		this.img = img;
+	public void setIcoPath(String ico_path) {
+		this.ico_path = ico_path;
 	}
 	public void setImgPath(String img_path) {
 		this.img_path = img_path;

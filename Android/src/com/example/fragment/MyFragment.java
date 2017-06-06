@@ -1,6 +1,7 @@
 package com.example.fragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -241,9 +242,9 @@ public class MyFragment extends Fragment {
 				
 				
 				//mygallerylist ≤‚ ‘
-				ArrayList<Share> data= getData();
-				ShareAdapter adapter = new ShareAdapter(getActivity(), data);
-				mygallerylist.setAdapter(adapter);
+				//List<Share> data= getData();
+				//ShareAdapter adapter = new ShareAdapter(getActivity(), data);
+				//mygallerylist.setAdapter(adapter);
 				
 				
 				
@@ -265,7 +266,6 @@ public class MyFragment extends Fragment {
 			        Share share2 = new Share();
 			        share2.setWords("123");
 			        share2.setUsername("34455");
-			        share2.setImg(2130837518);
 			        list.add(share2);
 			        return list;
 			    }
