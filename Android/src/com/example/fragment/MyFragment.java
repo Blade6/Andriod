@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import com.example.adapter.ShareAdapter;
 import com.example.common.AtyContainer;
 import com.example.common.LogUtil;
+import com.example.common.MD5;
 import com.example.common.MyURL;
 import com.example.entity.Share;
 import com.example.mychat.R;
@@ -53,7 +54,7 @@ public class MyFragment extends Fragment {
 	private LinearLayout layout1;
 	private LinearLayout layout2;
 	private LinearLayout layout3;
-	private LinearLayout layout4;
+	private LinearLayout layout5;
 	private SharedPreferences sp;
 	private ImageView returnview;
 	private ImageView ico;
@@ -61,10 +62,14 @@ public class MyFragment extends Fragment {
 	private TextView id;
 	private ListView mygallerylist;
 	private LinearLayout selectico;
-	private LinearLayout chengenanme;
-	private TextView textview;
-	private Button change;
-	private EditText edittext;
+	//private LinearLayout chengenanme;
+	//private TextView textview;
+	//private Button change;
+	//private EditText edittext;
+	private LinearLayout changePwd;
+	private EditText oldpwd;
+	private EditText newpwd;
+	private Button change_pwd_btn;
 	private Button changeinfo;
 	private Context context;
 	
@@ -97,17 +102,21 @@ public class MyFragment extends Fragment {
 		layout1 = (LinearLayout) view.findViewById(R.id.my1);  
 		layout2 = (LinearLayout) view.findViewById(R.id.my2);
 		layout3 = (LinearLayout) view.findViewById(R.id.my3);
-		layout4 = (LinearLayout) view.findViewById(R.id.my4);
+		layout5 = (LinearLayout) view.findViewById(R.id.my5);
 		returnview = (ImageView) this.getActivity().findViewById(R.id.returnview);
 		ico = (ImageView) view.findViewById(R.id.ico);
 		name = (TextView) view.findViewById(R.id.info_name);
 		id = (TextView) view.findViewById(R.id.info_id);
 		mygallerylist = (ListView) view.findViewById(R.id.mygallerylist);
 		selectico = (LinearLayout) view.findViewById(R.id.selectico);
-		chengenanme = (LinearLayout) view.findViewById(R.id.chengenanme);
-		textview = (TextView) view.findViewById(R.id.textview);
-		change = (Button) view.findViewById(R.id.change);
-		edittext = (EditText) view.findViewById(R.id.edittext);
+		//chengenanme = (LinearLayout) view.findViewById(R.id.chengenanme);
+		//textview = (TextView) view.findViewById(R.id.textview);
+		//change = (Button) view.findViewById(R.id.change);
+		//edittext = (EditText) view.findViewById(R.id.edittext);
+		changePwd = (LinearLayout) view.findViewById(R.id.changePwd);
+		oldpwd = (EditText) view.findViewById(R.id.old_pwd);
+		newpwd = (EditText) view.findViewById(R.id.new_pwd);
+		change_pwd_btn = (Button) view.findViewById(R.id.change_pwd_btn);
 		changeinfo = (Button) view.findViewById(R.id.changeinfo);
 		
 		//创建缓存目录，系统一运行就得创建缓存目录的，  
@@ -159,27 +168,63 @@ public class MyFragment extends Fragment {
 				}
 		});
 		
-		//修改用户名
-		chengenanme.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				textview.setText("用户名");	
-				layout2.setVisibility(View.GONE);
-				edittext.setText("");
-				layout4.setVisibility(View.VISIBLE);
-				}
-			});	
+//		//修改用户名
+//		chengenanme.setOnClickListener(new OnClickListener() {
+//			public void onClick(View v) {
+//				textview.setText("用户名");	
+//				layout2.setVisibility(View.GONE);
+//				edittext.setText("");
+//				layout4.setVisibility(View.VISIBLE);
+//			}
+//		});	
+//		
+//		//确认修改
+//		change.setOnClickListener(new OnClickListener() {
+//			public void onClick(View v) {	
+//				String object = (String) textview.getText();
+//				if(object == "用户名"){
+//					name.setText(edittext.getText());				
+//				}
+//				layout4.setVisibility(View.GONE);
+//				layout2.setVisibility(View.VISIBLE);
+//			}
+//		});	
 		
-		//确认修改
-		change.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {	
-				String object = (String) textview.getText();
-				if(object == "用户名"){
-					name.setText(edittext.getText());				
-				}
-				layout4.setVisibility(View.GONE);
-				layout2.setVisibility(View.VISIBLE);
-				}
-			});		
+		changePwd.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				layout2.setVisibility(View.GONE);
+				layout5.setVisibility(View.VISIBLE);
+			}
+		});
+		
+		change_pwd_btn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				AsyncHttpClient client = new AsyncHttpClient();
+				RequestParams params = new RequestParams();
+				String userid = sp.getString("USERID", "");
+				params.put("userid", userid);
+				params.put("oldpwd", MD5.getMd5(oldpwd.getText().toString().trim()));
+				params.put("newpwd", MD5.getMd5(newpwd.getText().toString().trim()));
+				client.post(MyURL.changeUserPwd, params, new JsonHttpResponseHandler(){
+					   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
+						   try {
+							   int returnCode =  (Integer) response.get("returnCode");
+							   if (returnCode == 1) {
+								   Toast.makeText(context, "修改成功",
+										Toast.LENGTH_SHORT).show();
+							   } else {
+								   Toast.makeText(context, "修改失败",
+										Toast.LENGTH_SHORT).show();
+							   }
+						   } catch (Exception e) {
+							   e.printStackTrace();
+						   }
+					   }
+				});
+			}
+		});
 		
 		
 		//个人信息获取
@@ -192,7 +237,7 @@ public class MyFragment extends Fragment {
 				   client.post(MyURL.getInfoURL, params, new JsonHttpResponseHandler(){
 					   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
 						   try {
-							   int returnCode =  (Integer) response.get("returnCode");
+							    int returnCode =  (Integer) response.get("returnCode");
 							    if (returnCode == 1) {
 							    	JSONObject data = response.getJSONObject("data");
 							    	name.setText(data.getString("username"));
@@ -231,21 +276,19 @@ public class MyFragment extends Fragment {
 				layout1.setVisibility(View.VISIBLE);  
 				layout2.setVisibility(View.GONE); 
 				layout3.setVisibility(View.GONE);
-				layout4.setVisibility(View.GONE);
+				layout5.setVisibility(View.GONE);
 				returnview.setVisibility(View.GONE);
 				
 			}
 		});
 		
-		
-		
 		//提交修改的信息
-		changeinfo.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {	
-				Toast.makeText(context, "修改成功",
-					     Toast.LENGTH_SHORT).show();
-			}
-		});	
+//		changeinfo.setOnClickListener(new OnClickListener() {
+//			public void onClick(View v) {	
+//				Toast.makeText(context, "修改成功",
+//					 Toast.LENGTH_SHORT).show();
+//			}
+//		});	
 		
 		
 		//我的个人相册

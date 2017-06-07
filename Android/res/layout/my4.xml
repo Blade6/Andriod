@@ -17,18 +17,20 @@
             android:layout_gravity="left|center_vertical"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
-            android:text="更改用户名"
+            android:text="更改用户信息"
             android:textColor="#ffffff"
             android:textSize="18sp" /> 
 	        
-	    <ImageView
+	    <TextView
             android:id="@+id/return_info"
             android:clickable="true"
-       		android:layout_width="30dp"
+       		android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
             android:layout_gravity="right|center_vertical"
             android:layout_marginRight="10dp"
-            android:src="@drawable/left" />
+            android:textSize="18sp"
+            android:textColor="#ffffff"
+            android:text="返回" />
 	</LinearLayout>
 	
 	<LinearLayout

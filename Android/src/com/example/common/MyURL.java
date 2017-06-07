@@ -14,6 +14,7 @@ public class MyURL {
 	public static final String addShareURL = URLHead + "share/";
 	public static final String getInfoURL = URLHead + "getUserMsg/";
 	public static final String getUserShareURL = URLHead + "getUserShare/";
+	public static final String changeUserPwd = URLHead + "changeUserpwd/";
 	public static final String LogoutURL = URLHead + "logout/";
 	public static final String talkServerIP = IP;
 	public static final int talkServerPort = 8089;

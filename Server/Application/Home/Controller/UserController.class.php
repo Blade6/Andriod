@@ -102,15 +102,24 @@ class UserController extends Controller {
         echo json_encode($json,JSON_UNESCAPED_UNICODE);
     }
     
-    // 修改密码，未被使用，原因是安卓端未实现相关功能
-    public function changeUserpwd($userid,$oldpwd,$oldpwd){
-       $pwd=(new UserModel())->userPwd($userid);
-       if($pwd==$oldpwd){
-            $result=(new UserModel())->changePwd($userid, $newpwd);
-       }
-       $json=(new JsonEvent())->encapsulate($result, 'userinfo');
-       header('Content-type:text/json');
-       echo json_encode($json,JSON_UNESCAPED_UNICODE); 
+    // 修改密码
+    public function changeUserpwd($userid,$oldpwd,$newpwd){
+        $pwd=D('user')->userPwd($userid);
+        if($pwd==$oldpwd){
+            $result=D('user')->changePwd($userid, $newpwd);
+            if ($result) {
+                $json['returnCode'] = 1;
+                $json['msg'] = "success";
+            } else {
+                $json['returnCode'] = 0;
+                $json['msg'] = "fail";
+            }
+        } else {
+            $json['returnCode'] = 0;
+            $json['msg'] = "fail";
+        }
+        header('Content-type:text/json');
+        echo json_encode($json,JSON_UNESCAPED_UNICODE); 
     }
     
     /**
@@ -132,27 +141,27 @@ class UserController extends Controller {
     /**
      * 修改个人信息
      */
-    public function changeUserMsg($userid,$username){
-        if(!D('user')->isUserExist($username)) {
-            $result1 = D('user') ->changeUserInfo($userid,$username);
-            if($result1){
-                $result2 = D('user') ->findUser($userid);
-                $data['id'] = $result2['id'];
-                $data['userid'] = $result2['userid'];
-                $data['username'] = $result2['username'];
-                $data['pic'] = $result2['pic'];
-                $json = (new JsonEvent())->encapsulate($data, "userInfo");
-            }else{
-                $json['returnCode'] = 0;
-                $json['msg'] = "change fail";
-            }
-        } else {
-            $json['returnCode'] = 0;
-            $json['msg'] = "username exist";
-        }
-        header('Content-type:text/json');
-        echo json_encode($json,JSON_UNESCAPED_UNICODE);
-    }
+//    public function changeUserMsg($userid,$username){
+//        if(!D('user')->isUserExist($username)) {
+//            $result1 = D('user') ->changeUserInfo($userid,$username);
+//            if($result1){
+//                $result2 = D('user') ->findUser($userid);
+//                $data['id'] = $result2['id'];
+//                $data['userid'] = $result2['userid'];
+//                $data['username'] = $result2['username'];
+//                $data['pic'] = $result2['pic'];
+//                $json = (new JsonEvent())->encapsulate($data, "userInfo");
+//            }else{
+//                $json['returnCode'] = 0;
+//                $json['msg'] = "change fail";
+//            }
+//        } else {
+//            $json['returnCode'] = 0;
+//            $json['msg'] = "username exist";
+//        }
+//        header('Content-type:text/json');
+//        echo json_encode($json,JSON_UNESCAPED_UNICODE);
+//    }
     
     /**
      * 获取用户相册

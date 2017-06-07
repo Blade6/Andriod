@@ -27,11 +27,11 @@
         layout="@layout/my3" /> 
         
     <include  
-        android:id="@+id/my4"  
+        android:id="@+id/my5"  
         android:layout_width="match_parent"  
         android:layout_height="0dp"  
         android:layout_weight="1"  
         android:visibility="gone"  
-        layout="@layout/my4" /> 
+        layout="@layout/my5" /> 
               
 </LinearLayout>

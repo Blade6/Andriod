@@ -87,19 +87,18 @@ class UserModel extends Model {
         return $re["pic"];
     }
     
-    public function changePwd($userid,$newpwd){
-        $user = M('user');
-        $data['password'] = $newpwd;
-        $result = $user->where("userid='$userid'")->save($data);
-        return $result;
+    // 根据userid获取用户id
+    public function getId($userid) {
+        $data["userid"] = $userid;
+        $re = M('user')->where($data)->find();
+        return $re["id"];
     }
     
-    // 修改用户名
-    public function changeUserInfo($userid,$username){
-        $user=M('user');
-        $data['userid']=$userid;
-        $data['username']=$username;
-        $result=$user->where($data)->save();
+    public function changePwd($userid,$newpwd){
+        $user = M('user');
+        $data["id"] = $this->getId($userid);
+        $data['password'] = $newpwd;
+        $result = $user->save($data);
         return $result;
     }
     
@@ -109,6 +108,13 @@ class UserModel extends Model {
         $data['userid']=$userid;
         $result=$user->where($data)->find();
         return $result;
+    }
+    
+    public function userPwd($userid) {
+        $user = M('user');
+        $data["userid"] = $userid;
+        $result = $user->field("password")->where($data)->find();
+        return $result["password"];
     }
     
 }
