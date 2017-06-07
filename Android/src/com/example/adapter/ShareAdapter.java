@@ -80,7 +80,6 @@ public class ShareAdapter extends BaseAdapter {
         }
         if (info.getImgPath() != null) {
         	asyncloadImage(holder.shareimg, MyURL.Address + info.getImgPath(), "moment");
-            LogUtil.d("MainActivity", MyURL.Address + info.getImgPath());
         }
         return convertView;
 	}

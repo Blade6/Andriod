@@ -240,8 +240,8 @@ public class ShareFragment extends Fragment {
 			}
 		});
 		
-		
-//		shareimg.setOnClickListener(new OnClickListener() {		
+		//shareimg2是share2.xml中新增发图片的imageview的id
+//		shareimg2.setOnClickListener(new OnClickListener() {		
 //			public void onClick(View v) {			
 //				Intent intent = new Intent();  
 //                /* 开启Pictures画面Type设定为image */  

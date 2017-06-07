@@ -87,7 +87,7 @@ class UserController extends Controller {
         echo json_encode($json,JSON_UNESCAPED_UNICODE);
     }
     
-    //发朋友圈
+    // 发朋友圈
     public function share($userid,$words){
         $username = D('user')->getUserName($userid);
         $result=D('moment')->shareMoment($username,$words,$image);
@@ -102,15 +102,7 @@ class UserController extends Controller {
         echo json_encode($json,JSON_UNESCAPED_UNICODE);
     }
     
-    // 获取个人信息中的相册
-    public function getUserShare($userid){
-        $share=D('moment')->getMoments($userid);
-        $json = (new JsonEvent())->encapsulate($share, "userShare");
-        header('Content-type:text/json');
-        echo json_encode($json,JSON_UNESCAPED_UNICODE);
-    }
-    
-    // 修改密码
+    // 修改密码，未被使用，原因是安卓端未实现相关功能
     public function changeUserpwd($userid,$oldpwd,$oldpwd){
        $pwd=(new UserModel())->userPwd($userid);
        if($pwd==$oldpwd){
@@ -119,6 +111,64 @@ class UserController extends Controller {
        $json=(new JsonEvent())->encapsulate($result, 'userinfo');
        header('Content-type:text/json');
        echo json_encode($json,JSON_UNESCAPED_UNICODE); 
+    }
+    
+    /**
+     * 获取个人信息
+     */
+    public function getUserMsg($userid){
+        $result = D('user') ->findUser($userid);
+        if($result){
+            $data['id'] = $result['id'];
+            $data['userid'] = $result['userid'];
+            $data['username'] = $result['username'];
+            $data['pic'] = $result['pic'];
+            $json = (new JsonEvent())->encapsulate($data, "userInfo");
+            header('Content-type:text/json');
+            echo json_encode($json,JSON_UNESCAPED_UNICODE);
+        }
+    }
+
+    /**
+     * 修改个人信息
+     */
+    public function changeUserMsg($userid,$username){
+        if(!D('user')->isUserExist($username)) {
+            $result1 = D('user') ->changeUserInfo($userid,$username);
+            if($result1){
+                $result2 = D('user') ->findUser($userid);
+                $data['id'] = $result2['id'];
+                $data['userid'] = $result2['userid'];
+                $data['username'] = $result2['username'];
+                $data['pic'] = $result2['pic'];
+                $json = (new JsonEvent())->encapsulate($data, "userInfo");
+            }else{
+                $json['returnCode'] = 0;
+                $json['msg'] = "change fail";
+            }
+        } else {
+            $json['returnCode'] = 0;
+            $json['msg'] = "username exist";
+        }
+        header('Content-type:text/json');
+        echo json_encode($json,JSON_UNESCAPED_UNICODE);
+    }
+    
+    /**
+     * 获取用户相册
+     */
+    public function getUserShare($userid){
+        $username = D('user')->getUserName($userid);
+        $result = D('moment') ->findMoment($username);
+        if($result){
+            $json = (new JsonEvent())->encapsulate($result, "userMoment");
+        } else {
+            $json['returnCode'] = 0;
+            $json['msg'] = "fail";
+        }
+        $json["pic"] = D('user')->getUserPic($userid);
+        header('Content-type:text/json');
+        echo json_encode($json,JSON_UNESCAPED_UNICODE);
     }
     
 }

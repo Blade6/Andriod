@@ -1,5 +1,6 @@
 package com.example.fragment;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import com.example.entity.Share;
 import com.example.mychat.R;
 import com.example.mychat.R.id;
 import com.example.mychat.R.layout;
+import com.example.service.ShareService;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -24,7 +26,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +45,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MyFragment extends Fragment {
+	protected static final int SUCCESS_GET_SHARE = 0;
+	
 	private Button logout_button;
 	private TextView myinfo_button;
 	private TextView mygallery_button;
@@ -59,6 +67,20 @@ public class MyFragment extends Fragment {
 	private EditText edittext;
 	private Button changeinfo;
 	private Context context;
+	
+	private ShareAdapter adapter;
+	private File cache;
+	
+	private Handler mHandler = new Handler(){  
+        public void handleMessage(android.os.Message msg) {  
+            if(msg.what == SUCCESS_GET_SHARE){  
+                List<Share> shares = (List<Share>) msg.obj;  
+                adapter = new ShareAdapter(context,shares,cache);  
+                mygallerylist.setAdapter(adapter);  
+            }  
+        };  
+    };
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -87,6 +109,13 @@ public class MyFragment extends Fragment {
 		change = (Button) view.findViewById(R.id.change);
 		edittext = (EditText) view.findViewById(R.id.edittext);
 		changeinfo = (Button) view.findViewById(R.id.changeinfo);
+		
+		//创建缓存目录，系统一运行就得创建缓存目录的，  
+        cache = new File(Environment.getExternalStorageDirectory(), "cache");   
+        if(!cache.exists()){  
+            cache.mkdirs();  
+        }
+		
 		logout_button.setOnClickListener(new OnClickListener() {
 			//退出登录
 			public void onClick(View v) {			
@@ -128,7 +157,7 @@ public class MyFragment extends Fragment {
                 /* 取得相片后返回本画面 */  
                 getActivity().startActivityForResult(intent, 1);  
 				}
-			});
+		});
 		
 		//修改用户名
 		chengenanme.setOnClickListener(new OnClickListener() {
@@ -155,28 +184,41 @@ public class MyFragment extends Fragment {
 		
 		//个人信息获取
 		myinfo_button.setOnClickListener(new OnClickListener() {
-			
 			public void onClick(View v) {	
-//				   AsyncHttpClient client = new AsyncHttpClient();
-//				   RequestParams params = new RequestParams();
-//				   String userid = sp.getString("USERID", "");
-//				   params.put("userid", userid);
-//				   client.post(MyURL.LoginURL, params, new JsonHttpResponseHandler(){
-//					   ArrayList<Share>  result = null;
-//					   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
-//						   try {
-//							  //response.get("img");
-//							ico.setImageResource(R.drawable.myinfo);
-//							name.setText((String) response.get("name"));
-//							id.setText((String) response.get("id"));
-//							sex.setText((String) response.get("sex"));
-//							date.setText((String) response.get("date"));
-//						} catch (Exception e) {
-//							// TODO Auto-generated catch block
-//							e.printStackTrace();
-//						}
-//						};
-//					});
+				   AsyncHttpClient client = new AsyncHttpClient();
+				   RequestParams params = new RequestParams();
+				   String userid = sp.getString("USERID", "");
+				   params.put("userid", userid);
+				   client.post(MyURL.getInfoURL, params, new JsonHttpResponseHandler(){
+					   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
+						   try {
+							   int returnCode =  (Integer) response.get("returnCode");
+							    if (returnCode == 1) {
+							    	JSONObject data = response.getJSONObject("data");
+							    	name.setText(data.getString("username"));
+									id.setText(data.getString("userid"));
+							    	String ico_path = data.getString("pic");
+							    	if (ico_path.equals("/wechat/Public/Users/default.png")) {
+							    		ico.setImageResource(R.drawable.default_user_ico);
+							    	} else {
+							    		String name = "user" + "-" + ico_path.substring(ico_path.lastIndexOf("/")+1);
+							    		File file = new File(cache, name);
+							    		if (file.exists()) {  
+							                ico.setImageURI(Uri.fromFile(file));  
+							            } else {
+							            	ico.setImageResource(R.drawable.default_user_ico);
+							            }
+							    	}
+							    } else {
+							    	Toast.makeText(context, "获取失败",
+										     Toast.LENGTH_SHORT).show();
+							    }
+						   } catch (Exception e) {
+							   e.printStackTrace();
+							   LogUtil.d("MainActivity", "Error");
+						   }
+						};
+					});
 				layout1.setVisibility(View.GONE);	
 				layout2.setVisibility(View.VISIBLE);
 				returnview.setVisibility(View.VISIBLE);
@@ -186,7 +228,6 @@ public class MyFragment extends Fragment {
 		//返回按钮
 		returnview.setOnClickListener(new OnClickListener() {		
 			public void onClick(View v) {
-				
 				layout1.setVisibility(View.VISIBLE);  
 				layout2.setVisibility(View.GONE); 
 				layout3.setVisibility(View.GONE);
@@ -203,72 +244,65 @@ public class MyFragment extends Fragment {
 			public void onClick(View v) {	
 				Toast.makeText(context, "修改成功",
 					     Toast.LENGTH_SHORT).show();
-				
-				}
-			});	
+			}
+		});	
 		
 		
 		//我的个人相册
 		mygallery_button.setOnClickListener(new OnClickListener() {
-			
 			public void onClick(View v) {	
-				
-//			   AsyncHttpClient client = new AsyncHttpClient();
-//			   RequestParams params = new RequestParams();
-//			   String username_text = sp.getString("USERNAME", "");
-//			   params.put("userid", username_text);
-//			   client.post(MyURL.LoginURL, params, new JsonHttpResponseHandler(){
-//				   ArrayList<Share>  result = null;
-//				   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
-//					   try { 
-//						   Share s = new Share();
-//						    JSONArray jsonArray = (JSONArray) response.get("data");
-//						    for(int i=0;i<jsonArray.length();i++){
-//						    	JSONObject ob = (JSONObject) jsonArray.get(i);
-//						    	s.setIco(ob.getInt("ico"));
-//						    	s.setImg(ob.getInt("img"));
-//						    	s.setTitle(ob.getString("title"));
-//						    	s.setUsername(ob.getString("name"));
-//						        result.add(s);
-//						    }
-//						    ShareAdapter adapter = new ShareAdapter(context,result);
-//						    mygallerylist.setAdapter(adapter);  
-//					} catch (JSONException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//					};
-//				});
-				
-				
-				//mygallerylist 测试
-				//List<Share> data= getData();
-				//ShareAdapter adapter = new ShareAdapter(getActivity(), data);
-				//mygallerylist.setAdapter(adapter);
-				
-				
-				
-				
-				
+			   AsyncHttpClient client = new AsyncHttpClient();
+			   RequestParams params = new RequestParams();
+			   String username_text = sp.getString("USERID", "");
+			   params.put("userid", username_text);
+			   client.post(MyURL.getUserShareURL, params, new JsonHttpResponseHandler(){
+				   List<Share>  result = new ArrayList<Share>();
+				   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
+					   try { 
+						   int returnCode =  (Integer) response.get("returnCode");
+						    if (returnCode == 1) {
+						    	JSONArray jsonArray = (JSONArray) response.get("data");
+						    	String pic = response.getString("pic");
+							    for(int i=0;i<jsonArray.length();i++){
+							    	JSONObject ob = (JSONObject) jsonArray.get(i);
+							    	Share s = new Share();
+							    	if (!ob.getString("image").equals("null")) {
+							    		s.setImgPath(ob.getString("image"));
+							    	}
+
+							    	if (!ob.getString("words").equals("null")) {
+							    		s.setWords(ob.getString("words"));
+							    	}
+							    	s.setIcoPath(pic);
+							    	s.setUsername(ob.getString("username"));
+							        result.add(s);
+							    }
+							    
+							  //获取数据，主UI线程是不能做耗时操作的，所以启动子线程来做  
+						      new Thread(){  
+						            public void run() {  
+						                ShareService service = new ShareService();    
+						                //子线程通过Message对象封装信息，并且用初始化好的，  
+						                //Handler对象的sendMessage()方法把数据发送到主线程中，从而达到更新UI主线程的目的  
+						                Message msg = new Message();  
+						                msg.what = SUCCESS_GET_SHARE;  
+						                msg.obj = result;  
+						                mHandler.sendMessage(msg);  
+						            };  
+						        }.start();
+						    } else {
+						    	Toast.makeText(context, "动态获取失败",
+									     Toast.LENGTH_SHORT).show();
+						    }
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+					};
+				});		
 				layout1.setVisibility(View.GONE);  
 				layout3.setVisibility(View.VISIBLE);  
 				returnview.setVisibility(View.VISIBLE);
 			}
-			
-			private ArrayList<Share> getData() {
-				     
-				   //测试
-				   ArrayList<Share> list = new ArrayList<Share>();
-			        Share share = new Share();
-			        share.setWords("123");
-			        share.setUsername("34455");
-			        list.add(share);
-			        Share share2 = new Share();
-			        share2.setWords("123");
-			        share2.setUsername("34455");
-			        list.add(share2);
-			        return list;
-			    }
 		});	
 		
 		

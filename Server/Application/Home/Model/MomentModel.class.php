@@ -20,6 +20,7 @@ class MomentModel extends Model {
         $this->moment = M('moment');
     }
     
+    // 获取userid的用户自己以及好友的朋友圈
     public function getMoments($userid) {
         $friends1 = D('friends')->getUserFriends1($userid,'frename');
         $friends2 = D('friends')->getUserFriends2($userid,'username');
@@ -46,6 +47,7 @@ class MomentModel extends Model {
         return $moments;
     }
 
+    // 发朋友圈
     public function shareMoment($username,$words,$image){
         $moments=M('moment');
         $re = $moments->field('id')->order('id desc')->limit(1)->find();
@@ -55,6 +57,14 @@ class MomentModel extends Model {
         $data['words']=$words;
         //$data['image']=$image;
         $result = $this->moment->data($data)->add();
+        return $result;
+    }
+    
+    // 获取用户userid的所有朋友圈
+    public function findMoment($username){
+        $user=M('moment');
+        $data['username'] = $username;
+        $result=$user->where($data)->order('time desc')->select();
         return $result;
     }
 }

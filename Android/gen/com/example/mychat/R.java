@@ -67,8 +67,8 @@ containing a value of this type.
         public static final int username=0x7f02001f;
     }
     public static final class id {
-        public static final int action_forgot_password=0x7f090047;
-        public static final int action_settings=0x7f090048;
+        public static final int action_forgot_password=0x7f090048;
+        public static final int action_settings=0x7f090049;
         public static final int addshare=0x7f09003f;
         public static final int answer=0x7f09000b;
         public static final int answer2=0x7f09000d;
@@ -124,7 +124,8 @@ containing a value of this type.
         public static final int refresh=0x7f09001b;
         public static final int register=0x7f090008;
         public static final int remember=0x7f090005;
-        public static final int returnview=0x7f090037;
+        public static final int return_info=0x7f090037;
+        public static final int returnview=0x7f090047;
         public static final int right_layout=0x7f090024;
         public static final int right_msg=0x7f090025;
         public static final int selectico=0x7f09002e;
