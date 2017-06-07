@@ -90,6 +90,8 @@ public class RegisterActivity extends Activity {
 				try {
 					int returnCode =  (Integer) response.get("returnCode");
 					if(returnCode == 1){
+						Toast.makeText(getApplicationContext(), "×¢²á³É¹¦",
+							     Toast.LENGTH_SHORT).show();
 			            Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);  
 			            RegisterActivity.this.startActivity(intent);  
 					}else{
