@@ -131,7 +131,7 @@ public class TalkActivity extends Activity {
 					});
 				}
 				catch (IOException e) {
-					LogUtil.d("TalkActivity", "Ω” ’ ß∞‹");
+					e.printStackTrace();
 				}
 			}
 		}		

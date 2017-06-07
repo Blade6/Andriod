@@ -67,8 +67,8 @@ containing a value of this type.
         public static final int username=0x7f02001f;
     }
     public static final class id {
-        public static final int action_forgot_password=0x7f090046;
-        public static final int action_settings=0x7f090047;
+        public static final int action_forgot_password=0x7f090047;
+        public static final int action_settings=0x7f090048;
         public static final int addshare=0x7f09003f;
         public static final int answer=0x7f09000b;
         public static final int answer2=0x7f09000d;
@@ -77,7 +77,7 @@ containing a value of this type.
         public static final int chengenanme=0x7f090030;
         public static final int container=0x7f090001;
         public static final int edittext=0x7f090038;
-        public static final int enterRoom=0x7f090045;
+        public static final int enterRoom=0x7f090046;
         public static final int findfriend_textview=0x7f09003a;
         public static final int findnewfriend_button=0x7f09003b;
         public static final int foget_pwd=0x7f090006;
@@ -93,7 +93,7 @@ containing a value of this type.
         public static final int id_tab_setting_img=0x7f090015;
         public static final int id_tab_weixin=0x7f09000e;
         public static final int id_tab_weixin_img=0x7f09000f;
-        public static final int imageView=0x7f090044;
+        public static final int imageView=0x7f090045;
         public static final int imageView2=0x7f090034;
         public static final int img=0x7f09001e;
         public static final int include1=0x7f09001c;
@@ -129,9 +129,10 @@ containing a value of this type.
         public static final int right_msg=0x7f090025;
         public static final int selectico=0x7f09002e;
         public static final int send=0x7f090019;
+        public static final int sendMoment=0x7f090042;
         public static final int share1=0x7f09003d;
         public static final int share2=0x7f09003e;
-        public static final int shareimg=0x7f090042;
+        public static final int shareimg=0x7f090044;
         public static final int sharelist=0x7f090040;
         public static final int sharetext=0x7f090041;
         public static final int textview=0x7f090036;

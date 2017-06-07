@@ -73,21 +73,21 @@ public class ShareAdapter extends BaseAdapter {
         
         holder.username.setText(info.getUsername());
         holder.words.setText(info.getWords());
-        //if (info.getIcoPath() != null) {
-        	//asyncloadImage(holder.shareimg, MyURL.Address + info.getIcoPath());
-      //  } else {
+        if (!info.getIcoPath().equals("/wechat/Public/Users/default.png")) {
+        	asyncloadImage(holder.ico, MyURL.Address + info.getIcoPath(), "user");
+        } else {
         	holder.ico.setImageResource(R.drawable.default_user_ico);
-       // }
+        }
         if (info.getImgPath() != null) {
-        	asyncloadImage(holder.shareimg, MyURL.Address + info.getImgPath());
+        	asyncloadImage(holder.shareimg, MyURL.Address + info.getImgPath(), "moment");
             LogUtil.d("MainActivity", MyURL.Address + info.getImgPath());
         }
         return convertView;
 	}
 	 
-	private void asyncloadImage(ImageView pic, String path) {
+	private void asyncloadImage(ImageView pic, String path, String type) {
 	    ShareService service = new ShareService();
-	    AsyncImageTask task = new AsyncImageTask(service, pic, "moment");
+	    AsyncImageTask task = new AsyncImageTask(service, pic, type);
 	    task.execute(path);
 	}
 	

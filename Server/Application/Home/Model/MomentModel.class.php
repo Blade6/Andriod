@@ -39,17 +39,21 @@ class MomentModel extends Model {
             }
         }
         
-        $sql .= " order by time desc";
+        $sql_full = "select a.username,words,image,pic,time from (".$sql.") as a join user on a.username = user.username order by time desc";
         
-        $moments = M('moment')->query($sql);
+        $moments = M('moment')->query($sql_full);
         
         return $moments;
     }
 
     public function shareMoment($username,$words,$image){
+        $moments=M('moment');
+        $re = $moments->field('id')->order('id desc')->limit(1)->find();
+        $data['id'] = (int)$re['id'] + 1;
+        
         $data['username']=$username;
         $data['words']=$words;
-        $data['image']=$image;
+        //$data['image']=$image;
         $result = $this->moment->data($data)->add();
         return $result;
     }

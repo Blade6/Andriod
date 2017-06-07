@@ -13,11 +13,9 @@ import android.net.Uri;
 public class ShareService {
 	public Uri getImageURI(String path, File cache, String type) throws Exception {  
         String name = type + "-" + path.substring(path.lastIndexOf("/")+1);
-        LogUtil.d("MainActivity", "imagename:"+name);
         File file = new File(cache, name);   
         // 如果图片存在本地缓存目录，则不去服务器下载   
         if (file.exists()) {  
-        	LogUtil.d("MainActivity", "exist");
             return Uri.fromFile(file);//Uri.fromFile(path)这个方法能得到文件的URI  
         } else {  
             // 从网络上获取图片  

@@ -13,6 +13,8 @@ import com.example.adapter.ShareAdapter;
 import com.example.common.LogUtil;
 import com.example.common.MyURL;
 import com.example.entity.Share;
+import com.example.mychat.IndexActivity;
+import com.example.mychat.LoginActivity;
 import com.example.mychat.R;
 import com.example.service.ShareService;
 import com.loopj.android.http.AsyncHttpClient;
@@ -22,6 +24,7 @@ import com.loopj.android.http.RequestParams;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
@@ -32,6 +35,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -49,6 +53,7 @@ public class ShareFragment extends Fragment {
 	private ImageView returnview;
 	private EditText sharetext;
 	private ImageView shareimg;
+	private Button sendMoment;
 	private SharedPreferences sp;
 	private Context context;
 	private File cache;
@@ -81,6 +86,7 @@ public class ShareFragment extends Fragment {
 		returnview = (ImageView) this.getActivity().findViewById(R.id.returnview);
 		sharetext = (EditText) view.findViewById(R.id.sharetext);
 		shareimg = (ImageView) view.findViewById(R.id.shareimg);
+		sendMoment = (Button) view.findViewById(R.id.sendMoment);
 		sp = this.getActivity().getSharedPreferences("userinfo", Context.MODE_WORLD_READABLE);
 		List<Map<String, Object>>  result = new ArrayList<Map<String, Object>>();
 		
@@ -90,7 +96,7 @@ public class ShareFragment extends Fragment {
             cache.mkdirs();  
         }
 		
-	    AsyncHttpClient client = new AsyncHttpClient();
+        AsyncHttpClient client = new AsyncHttpClient();
 	    RequestParams params = new RequestParams();
 	    String userid = sp.getString("USERID", "");
 	    params.put("userid", userid);
@@ -110,6 +116,7 @@ public class ShareFragment extends Fragment {
 					    	if (!ob.getString("words").equals("null")) {
 					    		s.setWords(ob.getString("words"));
 					    	}
+					    	s.setIcoPath(ob.getString("pic"));
 					    	s.setUsername(ob.getString("username"));
 					        result.add(s);
 					    }
@@ -151,21 +158,100 @@ public class ShareFragment extends Fragment {
 				share1.setVisibility(View.VISIBLE);  
 				share2.setVisibility(View.GONE);  
 				returnview.setVisibility(View.GONE);
+				
+				AsyncHttpClient client = new AsyncHttpClient();
+			    RequestParams params = new RequestParams();
+			    String userid = sp.getString("USERID", "");
+			    params.put("userid", userid);
+			    client.post(MyURL.getShareURL, params, new JsonHttpResponseHandler(){
+				   List<Share>  result = new ArrayList<Share>();
+				   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
+					   try { 
+						    int returnCode =  (Integer) response.get("returnCode");
+						    if (returnCode == 1) {
+						    	JSONArray jsonArray = (JSONArray) response.get("data");
+							    for(int i=0;i<jsonArray.length();i++){
+							    	JSONObject ob = (JSONObject) jsonArray.get(i);
+							    	Share s = new Share();
+							    	if (!ob.getString("image").equals("null")) {
+							    		s.setImgPath(ob.getString("image"));
+							    	}
+							    	if (!ob.getString("words").equals("null")) {
+							    		s.setWords(ob.getString("words"));
+							    	}
+							    	s.setIcoPath(ob.getString("pic"));
+							    	s.setUsername(ob.getString("username"));
+							        result.add(s);
+							    }
+							    
+							  //获取数据，主UI线程是不能做耗时操作的，所以启动子线程来做  
+						      new Thread(){  
+						            public void run() {  
+						                ShareService service = new ShareService();    
+						                //子线程通过Message对象封装信息，并且用初始化好的，  
+						                //Handler对象的sendMessage()方法把数据发送到主线程中，从而达到更新UI主线程的目的  
+						                Message msg = new Message();  
+						                msg.what = SUCCESS_GET_SHARE;  
+						                msg.obj = result;  
+						                mHandler.sendMessage(msg);  
+						            };  
+						        }.start();
+						    } else {
+						    	Toast.makeText(context, "动态获取失败",
+									     Toast.LENGTH_SHORT).show();
+						    }
+					   } catch (JSONException e) {
+						   e.printStackTrace();
+					   }
+					};
+				});	
+			}
+		});
+		
+		sendMoment.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				String words = sharetext.getText().toString().trim();
+				AsyncHttpClient client = new AsyncHttpClient();
+				RequestParams params = new RequestParams();
+				params.put("userid", sp.getString("USERID", ""));
+				params.put("words", words);
+				
+				client.post(MyURL.addShareURL, params, new JsonHttpResponseHandler(){
+					public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
+						try {
+							int returnCode =  (Integer) response.get("returnCode");
+							if(returnCode == 1){
+								Toast.makeText(context, "发布成功",
+									     Toast.LENGTH_SHORT).show();
+								returnview.callOnClick();
+							}else{
+								Toast.makeText(context, "发布失败",
+									     Toast.LENGTH_SHORT).show();
+							}
+						} catch (Exception e) {
+							Toast.makeText(context, "发送网络请求失败，请先确认已连接网络",
+								     Toast.LENGTH_SHORT).show();
+						}
+						
+					};
+				});
+				
 			}
 		});
 		
 		
-		shareimg.setOnClickListener(new OnClickListener() {		
-			public void onClick(View v) {			
-				Intent intent = new Intent();  
-                /* 开启Pictures画面Type设定为image */  
-                intent.setType("image/*");  
-                /* 使用Intent.ACTION_GET_CONTENT这个Action */  
-                intent.setAction(Intent.ACTION_GET_CONTENT);   
-                /* 取得相片后返回本画面 */  
-                getActivity().startActivityForResult(intent, 2);  
-			}
-		});
+//		shareimg.setOnClickListener(new OnClickListener() {		
+//			public void onClick(View v) {			
+//				Intent intent = new Intent();  
+//                /* 开启Pictures画面Type设定为image */  
+//                intent.setType("image/*");  
+//                /* 使用Intent.ACTION_GET_CONTENT这个Action */  
+//                intent.setAction(Intent.ACTION_GET_CONTENT);   
+//                /* 取得相片后返回本画面 */  
+//                getActivity().startActivityForResult(intent, 2);  
+//			}
+//		});
 	}
     
 }

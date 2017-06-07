@@ -8,6 +8,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" 
         android:background="@drawable/ll_customer_selector" >
+	    
+         <ImageView
+			 android:id="@+id/addshare"
+			 android:layout_width="60dp"
+			 android:layout_height="60dp"
+			 android:layout_marginRight="5dp"
+			 android:src="@drawable/add_share" /> 
+	    
 	    <TextView  
 	        android:layout_width="fill_parent"  
 	        android:layout_height="30sp"  
@@ -15,16 +23,9 @@
 	        android:gravity="center_vertical|left"
 	        android:layout_marginLeft="10dp"
 	        android:text="好友分享"
-	        android:background="@drawable/buttom"
 	        android:layout_gravity="left|center_vertical"
 	        android:layout_weight="1"/>  
-	        
-	     <ImageView
-			 android:id="@+id/addshare"
-			 android:layout_width="60dp"
-			 android:layout_height="60dp"
-			 android:layout_marginRight="10dp"
-			 android:src="@drawable/add_share" /> 
+
     </LinearLayout>
     <LinearLayout
 		android:layout_width="match_parent"

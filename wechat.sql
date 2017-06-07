@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-06-06 17:55:58
+-- Generation Time: 2017-06-07 08:00:10
 -- 服务器版本： 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -82,7 +82,9 @@ INSERT INTO `moment` (`id`, `username`, `words`, `image`, `time`) VALUES
 (2, 'hjh', '111', NULL, '2017-06-05 05:41:56'),
 (3, 'hjh', 'tttt', NULL, '2017-06-05 05:42:09'),
 (4, 'zzz', '~~~~', NULL, '2017-06-05 05:46:21'),
-(5, 'la', '测试', NULL, '2017-06-05 05:46:39');
+(5, 'la', '测试', NULL, '2017-06-05 05:46:39'),
+(6, 'ttt', '123', NULL, '2017-06-07 05:45:08'),
+(7, 'hjh', 'begin', NULL, '2017-06-07 05:57:47');
 
 -- --------------------------------------------------------
 
@@ -151,12 +153,12 @@ ALTER TABLE `user`
 -- 使用表AUTO_INCREMENT `friends`
 --
 ALTER TABLE `friends`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- 使用表AUTO_INCREMENT `moment`
 --
 ALTER TABLE `moment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- 限制导出的表
 --

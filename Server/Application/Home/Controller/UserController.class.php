@@ -88,7 +88,8 @@ class UserController extends Controller {
     }
     
     //发朋友圈
-    public function share($userid,$username,$words,$image){
+    public function share($userid,$words){
+        $username = D('user')->getUserName($userid);
         $result=D('moment')->shareMoment($username,$words,$image);
         if($result){
             $json['returnCode'] = 1;
