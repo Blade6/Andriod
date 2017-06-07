@@ -49,7 +49,7 @@ public class MyFragment extends Fragment {
 	protected static final int SUCCESS_GET_SHARE = 0;
 	
 	private Button logout_button;
-	private TextView myinfo_button;
+	private LinearLayout myinfo_button;
 	private TextView mygallery_button;
 	private LinearLayout layout1;
 	private LinearLayout layout2;
@@ -97,7 +97,7 @@ public class MyFragment extends Fragment {
 		context = this.getActivity().getApplicationContext();
 		sp = this.getActivity().getSharedPreferences("userinfo", Context.MODE_WORLD_READABLE);
 		logout_button = (Button) view.findViewById(R.id.logout);
-		myinfo_button = (TextView) view.findViewById(R.id.myinfo);
+		myinfo_button = (LinearLayout) view.findViewById(R.id.myinfo);
 		mygallery_button = (TextView) view.findViewById(R.id.mygallery);
 		layout1 = (LinearLayout) view.findViewById(R.id.my1);  
 		layout2 = (LinearLayout) view.findViewById(R.id.my2);
@@ -190,6 +190,8 @@ public class MyFragment extends Fragment {
 //			}
 //		});	
 		
+		
+		
 		changePwd.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -267,17 +269,27 @@ public class MyFragment extends Fragment {
 				layout1.setVisibility(View.GONE);	
 				layout2.setVisibility(View.VISIBLE);
 				returnview.setVisibility(View.VISIBLE);
+				if (returnview.getVisibility() == View.VISIBLE) {
+					LogUtil.d("MainActivity", "bingo");
+				} else {
+					LogUtil.d("MainActivity", "error");
+				}
 			}
 		});	
 		
 		//·µ»Ø°´Å¥
 		returnview.setOnClickListener(new OnClickListener() {		
 			public void onClick(View v) {
+//				LogUtil.d("MainActivity", "you click me");
+//				LogUtil.d("MainActivity", layout1.getVisibility()+"");
+//				LogUtil.d("MainActivity", layout2.getVisibility()+"");
+//				LogUtil.d("MainActivity", layout3.getVisibility()+"");
+//				LogUtil.d("MainActivity", layout5.getVisibility()+"");
 				layout1.setVisibility(View.VISIBLE);  
 				layout2.setVisibility(View.GONE); 
 				layout3.setVisibility(View.GONE);
 				layout5.setVisibility(View.GONE);
-				returnview.setVisibility(View.GONE);
+				returnview.setVisibility(View.INVISIBLE);
 				
 			}
 		});

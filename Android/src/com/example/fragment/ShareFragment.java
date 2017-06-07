@@ -50,7 +50,7 @@ public class ShareFragment extends Fragment {
 	private ImageView addshare;
 	private LinearLayout share1;
 	private LinearLayout share2;
-	private ImageView returnview;
+	private ImageView share_returnview;
 	private EditText sharetext;
 	private ImageView shareimg;
 	private Button sendMoment;
@@ -83,7 +83,7 @@ public class ShareFragment extends Fragment {
 		context = this.getActivity().getApplicationContext();
 		share1 = (LinearLayout) view.findViewById(R.id.share1);
 		share2 = (LinearLayout) view.findViewById(R.id.share2);
-		returnview = (ImageView) this.getActivity().findViewById(R.id.returnview);
+		share_returnview = (ImageView) this.getActivity().findViewById(R.id.share_returnview);
 		sharetext = (EditText) view.findViewById(R.id.sharetext);
 		shareimg = (ImageView) view.findViewById(R.id.shareimg);
 		sendMoment = (Button) view.findViewById(R.id.sendMoment);
@@ -146,65 +146,68 @@ public class ShareFragment extends Fragment {
 		});	
 		
 		addshare.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {			
-				share1.setVisibility(View.GONE);  
+			public void onClick(View v) {	
+				share1.setVisibility(View.GONE);
 				share2.setVisibility(View.VISIBLE);  
-				returnview.setVisibility(View.VISIBLE);
+				share_returnview.setVisibility(View.VISIBLE);
 			}
 		});
 		
-		returnview.setOnClickListener(new OnClickListener() {		
-			public void onClick(View v) {			
-				share1.setVisibility(View.VISIBLE);  
-				share2.setVisibility(View.GONE);  
-				returnview.setVisibility(View.GONE);
-				
-				AsyncHttpClient client = new AsyncHttpClient();
-			    RequestParams params = new RequestParams();
-			    String userid = sp.getString("USERID", "");
-			    params.put("userid", userid);
-			    client.post(MyURL.getShareURL, params, new JsonHttpResponseHandler(){
-				   List<Share>  result = new ArrayList<Share>();
-				   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
-					   try { 
-						    int returnCode =  (Integer) response.get("returnCode");
-						    if (returnCode == 1) {
-						    	JSONArray jsonArray = (JSONArray) response.get("data");
-							    for(int i=0;i<jsonArray.length();i++){
-							    	JSONObject ob = (JSONObject) jsonArray.get(i);
-							    	Share s = new Share();
-							    	if (!ob.getString("image").equals("null")) {
-							    		s.setImgPath(ob.getString("image"));
-							    	}
-							    	if (!ob.getString("words").equals("null")) {
-							    		s.setWords(ob.getString("words"));
-							    	}
-							    	s.setIcoPath(ob.getString("pic"));
-							    	s.setUsername(ob.getString("username"));
-							        result.add(s);
+		share_returnview.setOnClickListener(new OnClickListener() {		
+			public void onClick(View v) {
+				//LogUtil.d("MainActivity", "you click me");
+				//LogUtil.d("MainActivity", share1.getVisibility()+"");
+				//LogUtil.d("MainActivity", share2.getVisibility()+"");
+					share2.setVisibility(View.GONE);
+					share1.setVisibility(View.VISIBLE);   
+					share_returnview.setVisibility(View.INVISIBLE);
+					
+					AsyncHttpClient client = new AsyncHttpClient();
+				    RequestParams params = new RequestParams();
+				    String userid = sp.getString("USERID", "");
+				    params.put("userid", userid);
+				    client.post(MyURL.getShareURL, params, new JsonHttpResponseHandler(){
+					   List<Share>  result = new ArrayList<Share>();
+					   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
+						   try { 
+							    int returnCode =  (Integer) response.get("returnCode");
+							    if (returnCode == 1) {
+							    	JSONArray jsonArray = (JSONArray) response.get("data");
+								    for(int i=0;i<jsonArray.length();i++){
+								    	JSONObject ob = (JSONObject) jsonArray.get(i);
+								    	Share s = new Share();
+								    	if (!ob.getString("image").equals("null")) {
+								    		s.setImgPath(ob.getString("image"));
+								    	}
+								    	if (!ob.getString("words").equals("null")) {
+								    		s.setWords(ob.getString("words"));
+								    	}
+								    	s.setIcoPath(ob.getString("pic"));
+								    	s.setUsername(ob.getString("username"));
+								        result.add(s);
+								    }
+								    
+								  //获取数据，主UI线程是不能做耗时操作的，所以启动子线程来做  
+							      new Thread(){  
+							            public void run() {  
+							                ShareService service = new ShareService();    
+							                //子线程通过Message对象封装信息，并且用初始化好的，  
+							                //Handler对象的sendMessage()方法把数据发送到主线程中，从而达到更新UI主线程的目的  
+							                Message msg = new Message();  
+							                msg.what = SUCCESS_GET_SHARE;  
+							                msg.obj = result;  
+							                mHandler.sendMessage(msg);  
+							            };  
+							        }.start();
+							    } else {
+							    	Toast.makeText(context, "动态获取失败",
+										     Toast.LENGTH_SHORT).show();
 							    }
-							    
-							  //获取数据，主UI线程是不能做耗时操作的，所以启动子线程来做  
-						      new Thread(){  
-						            public void run() {  
-						                ShareService service = new ShareService();    
-						                //子线程通过Message对象封装信息，并且用初始化好的，  
-						                //Handler对象的sendMessage()方法把数据发送到主线程中，从而达到更新UI主线程的目的  
-						                Message msg = new Message();  
-						                msg.what = SUCCESS_GET_SHARE;  
-						                msg.obj = result;  
-						                mHandler.sendMessage(msg);  
-						            };  
-						        }.start();
-						    } else {
-						    	Toast.makeText(context, "动态获取失败",
-									     Toast.LENGTH_SHORT).show();
-						    }
-					   } catch (JSONException e) {
-						   e.printStackTrace();
-					   }
-					};
-				});	
+						   } catch (JSONException e) {
+							   e.printStackTrace();
+						   }
+						};
+					});
 			}
 		});
 		
@@ -224,7 +227,7 @@ public class ShareFragment extends Fragment {
 							if(returnCode == 1){
 								Toast.makeText(context, "发布成功",
 									     Toast.LENGTH_SHORT).show();
-								returnview.callOnClick();
+								share_returnview.callOnClick();
 							}else{
 								Toast.makeText(context, "发布失败",
 									     Toast.LENGTH_SHORT).show();

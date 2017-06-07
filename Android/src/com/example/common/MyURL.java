@@ -1,7 +1,7 @@
 package com.example.common;
 
 public class MyURL {
-	public static String IP = "192.168.201.80";
+	public static String IP = "10.173.164.247";
 	public static String Address = "http://" + IP + ":8080";
 	public static String URLHead = Address + "/wechat/index.php/Home/User/";
 	

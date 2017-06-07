@@ -39,11 +39,11 @@ import android.view.View.OnClickListener;
 
 public class FrdFragment extends Fragment {
 	private ListView listView;
-	private LinearLayout newfriend;
+	private ImageView newfriend;
 	private LinearLayout layout1;
 	private LinearLayout layout2;
 	private SharedPreferences sp;
-	private ImageView returnview;
+	private ImageView fri_returnview;
 	private Button findnewfriend_button;
 	private ImageView refresh;
 	private ListView newfriendlist;
@@ -65,11 +65,11 @@ public class FrdFragment extends Fragment {
 		super.onViewCreated(view, savedInstanceState);
 		context = this.getActivity().getApplicationContext();
 		listView=(ListView) view.findViewById(R.id.friends);
-		newfriend = (LinearLayout) view.findViewById(R.id.newfriend);
+		newfriend = (ImageView) view.findViewById(R.id.newfriend);
 		layout1 = (LinearLayout) view.findViewById(R.id.include1);  
 		layout2 = (LinearLayout) view.findViewById(R.id.include2);
 		LayoutInflater inflater =  LayoutInflater.from(this.getActivity());
-		returnview = (ImageView) this.getActivity().findViewById(R.id.returnview);
+		fri_returnview = (ImageView) this.getActivity().findViewById(R.id.fri_returnview);
 		findnewfriend_button = (Button) view.findViewById(R.id.findnewfriend_button);
 		refresh = (ImageView) view.findViewById(R.id.refresh);
 		newfriendlist = (ListView) view.findViewById(R.id.newfriendlist);
@@ -106,20 +106,22 @@ public class FrdFragment extends Fragment {
 				}
 				};
 			});
-		
+		   
 		newfriend.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {			
-				layout1.setVisibility(View.GONE);  
+			public void onClick(View v) {
+				layout1.setVisibility(View.GONE);
 				layout2.setVisibility(View.VISIBLE);  
-				returnview.setVisibility(View.VISIBLE);
+				fri_returnview.setVisibility(View.VISIBLE);
 			}
 		});
-		returnview.setOnClickListener(new OnClickListener() {		
-			public void onClick(View v) {			
-				layout1.setVisibility(View.VISIBLE);  
-				layout2.setVisibility(View.GONE);  
-				returnview.setVisibility(View.GONE);
-				
+		fri_returnview.setOnClickListener(new OnClickListener() {		
+			public void onClick(View v) {	
+				//LogUtil.d("MainActivity", "you click me");
+				//LogUtil.d("MainActivity", layout1.getVisibility()+"");
+				//LogUtil.d("MainActivity", layout2.getVisibility()+"");
+				layout2.setVisibility(View.GONE); 
+				layout1.setVisibility(View.VISIBLE);
+				fri_returnview.setVisibility(View.INVISIBLE);
 			}
 		});
 		
