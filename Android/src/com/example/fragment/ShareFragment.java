@@ -48,6 +48,7 @@ public class ShareFragment extends Fragment {
 	
 	private ListView sharelist;
 	private ImageView addshare;
+	private ImageView share_refresh;
 	private LinearLayout share1;
 	private LinearLayout share2;
 	private ImageView share_returnview;
@@ -80,6 +81,7 @@ public class ShareFragment extends Fragment {
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		sharelist = (ListView) view.findViewById(R.id.sharelist);
 		addshare =  (ImageView) view.findViewById(R.id.addshare);
+		share_refresh = (ImageView) view.findViewById(R.id.share_refresh);
 		context = this.getActivity().getApplicationContext();
 		share1 = (LinearLayout) view.findViewById(R.id.share1);
 		share2 = (LinearLayout) view.findViewById(R.id.share2);
@@ -208,6 +210,60 @@ public class ShareFragment extends Fragment {
 						   }
 						};
 					});
+			}
+		});
+		
+		share_refresh.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				AsyncHttpClient client = new AsyncHttpClient();
+			    RequestParams params = new RequestParams();
+			    String userid = sp.getString("USERID", "");
+			    params.put("userid", userid);
+			    client.post(MyURL.getShareURL, params, new JsonHttpResponseHandler(){
+				   List<Share>  result = new ArrayList<Share>();
+				   public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, org.json.JSONObject response) {
+					   try { 
+						    int returnCode =  (Integer) response.get("returnCode");
+						    if (returnCode == 1) {
+						    	JSONArray jsonArray = (JSONArray) response.get("data");
+							    for(int i=0;i<jsonArray.length();i++){
+							    	JSONObject ob = (JSONObject) jsonArray.get(i);
+							    	Share s = new Share();
+							    	if (!ob.getString("image").equals("null")) {
+							    		s.setImgPath(ob.getString("image"));
+							    	}
+							    	if (!ob.getString("words").equals("null")) {
+							    		s.setWords(ob.getString("words"));
+							    	}
+							    	s.setIcoPath(ob.getString("pic"));
+							    	s.setUsername(ob.getString("username"));
+							        result.add(s);
+							    }
+//							    ShareAdapter adapter = new ShareAdapter(context,result);
+//							    sharelist.setAdapter(adapter);
+							    
+							  //获取数据，主UI线程是不能做耗时操作的，所以启动子线程来做  
+						      new Thread(){  
+						            public void run() {  
+						                ShareService service = new ShareService();    
+						                //子线程通过Message对象封装信息，并且用初始化好的，  
+						                //Handler对象的sendMessage()方法把数据发送到主线程中，从而达到更新UI主线程的目的  
+						                Message msg = new Message();  
+						                msg.what = SUCCESS_GET_SHARE;  
+						                msg.obj = result;  
+						                mHandler.sendMessage(msg);  
+						            };  
+						        }.start();
+						    } else {
+						    	Toast.makeText(context, "动态获取失败",
+									     Toast.LENGTH_SHORT).show();
+						    }
+					   } catch (JSONException e) {
+						   e.printStackTrace();
+					   }
+					};
+				});				
 			}
 		});
 		
